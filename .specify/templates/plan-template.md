@@ -31,7 +31,12 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- [ ] **Spec-Driven Development**: Is there a clear, approved spec? Are changes traceable to it?
+- [ ] **Modular Architecture**: Are components self-contained, independently deployable, and communicate via well-defined interfaces?
+- [ ] **Test-Driven Development (TDD)**: Is TDD being applied? Are tests written first and failing before implementation?
+- [ ] **Observability**: Will components include robust logging, metrics, and tracing?
+- [ ] **Security by Design**: Are security considerations integrated from the outset (API endpoints, data handling, vulnerability prevention)?
+- [ ] **Scalability and Performance**: Is the design optimized for performance and scalability, especially for the RAG chatbot?
 
 ## Project Structure
 

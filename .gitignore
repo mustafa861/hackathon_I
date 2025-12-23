@@ -1,107 +1,25 @@
-# Logs
-*.log
-*.log.*
-
-# Environment variables
-.env*
-!.env.example
-
-# macOS
-.DS_Store
-
-# Windows
-Thumbs.db
-
 # Python
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
-.Python
-env/
-venv/
 .venv/
-.ENV
-.ENV.*
-.venv.bak/
-pip-log.txt
-pip-delete-this-directory.txt
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.db
-*.sqlite
-*.sqlite3
-.pytest_cache/
-.hypothesis/
-.pyre/
-.pytype/
-mypy_cache/
-.dmypy.json
-dypy/
+venv/
+dist/
+*.egg-info/
 
-# Backend specific (FastAPI)
-backend/__pycache__/
-backend/*.pyc
-backend/venv/
-backend/.venv/
-backend/.env*
-backend/.pytest_cache/
-backend/.coverage
-backend/coverage.xml
+# Node.js
+node_modules/
+dist/
+build/
+*.log
+.env*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
 
-# Node.js / Docusaurus (Frontend)
-book/node_modules/
-book/build/
-book/dist/
-book/.cache/
-book/.docusaurus/
-book/static/css/*.rtl.css
-book/static/js/*.chunk-map.json
-book/.env*
-book/.eslintcache
-book/.npmrc
-book/.nvmrc
-book/yarn.lock
-book/package-lock.json
-book/npm-debug.log*
-book/coverage/
-book/lib-cov/
-book/cov-int/
-book/nyc_output/
-book/.nyc_output/
-book/logs
-book/.log
-book/.npm
-book/.yarn-integrity
-book/yarn-error.log
-book/.yarn/
-book/.pnp.*
-book/*.tgz
-book/coverage/
-book/lib-cov/
-book/cov-int/
-book/nyc_output/
-book/.nyc_output/
-book/logs
-book/.log
-book/.npm
-book/.yarn-integrity
-book/yarn-error.log
-book/.yarn/
-book/.pnp.*
-book/*.tgz
-book/.idea/
-book/.vscode/
-
-# IDEs
-.vscode/
-.idea/
-
-# OS
+# Universal
 .DS_Store
 Thumbs.db
+*.tmp
+*.swp
+.vscode/
+.idea/
