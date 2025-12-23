@@ -4,7 +4,6 @@ import { PersonalizeButton } from '../../components/PersonalizeButton';
 import { TranslateButton } from '../../components/TranslateButton';
 import { ChatWidget } from '../../components/ChatWidget';
 import { useAuth } from '../../hooks/useAuth';
-import ReactMarkdown from 'react-markdown';
 
 export default function LayoutWrapper(props) {
   const [content, setContent] = useState(null);
@@ -36,7 +35,7 @@ export default function LayoutWrapper(props) {
 
       {content ? (
         <div className="markdown">
-          <ReactMarkdown>{content}</ReactMarkdown>
+          {content}
         </div>
       ) : (
         <Layout {...props} />

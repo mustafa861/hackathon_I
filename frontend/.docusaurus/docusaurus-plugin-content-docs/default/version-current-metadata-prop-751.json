@@ -1,0 +1,55 @@
+{
+  "pluginId": "default",
+  "version": "current",
+  "label": "Next",
+  "banner": null,
+  "badge": false,
+  "noIndex": false,
+  "className": "docs-version-current",
+  "isLast": true,
+  "docsSidebars": {
+    "docs": [
+      {
+        "type": "category",
+        "label": "Module 1",
+        "items": [
+          {
+            "type": "link",
+            "label": "Introduction to Physical AI & Humanoid Robotics",
+            "href": "/docs/intro",
+            "docId": "intro",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "ROS 2 Fundamentals",
+            "href": "/docs/ros2-nodes",
+            "docId": "ros2-nodes",
+            "unlisted": false
+          }
+        ],
+        "collapsed": true,
+        "collapsible": true
+      }
+    ]
+  },
+  "docs": {
+    "intro": {
+      "id": "intro",
+      "title": "Introduction to Physical AI & Humanoid Robotics",
+      "description": "- Understand the convergence of AI and robotics in physical embodiments",
+      "sidebar": "docs"
+    },
+    "intro_with_quiz": {
+      "id": "intro_with_quiz",
+      "title": "intro_with_quiz",
+      "description": ""
+    },
+    "ros2-nodes": {
+      "id": "ros2-nodes",
+      "title": "ROS 2 Fundamentals",
+      "description": "- Create and configure ROS 2 nodes",
+      "sidebar": "docs"
+    }
+  }
+}

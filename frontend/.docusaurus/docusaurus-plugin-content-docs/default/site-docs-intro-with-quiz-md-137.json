@@ -1,0 +1,14 @@
+{
+  "id": "intro_with_quiz",
+  "title": "intro_with_quiz",
+  "description": "",
+  "source": "@site/../docs/intro_with_quiz.md",
+  "sourceDirName": ".",
+  "slug": "/intro_with_quiz",
+  "permalink": "/docs/intro_with_quiz",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

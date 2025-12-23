@@ -1,0 +1,141 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "loadedVersions": [
+        {
+          "versionName": "current",
+          "label": "Next",
+          "banner": null,
+          "badge": false,
+          "noIndex": false,
+          "className": "docs-version-current",
+          "path": "/docs",
+          "tagsPath": "/docs/tags",
+          "isLast": true,
+          "routePriority": -1,
+          "sidebarFilePath": "C:\\Users\\computer lab\\Documents\\GitHub\\hackathon_I\\frontend\\sidebars.js",
+          "contentPath": "C:\\Users\\computer lab\\Documents\\GitHub\\hackathon_I\\docs",
+          "contentPathLocalized": "C:\\Users\\computer lab\\Documents\\GitHub\\hackathon_I\\frontend\\i18n\\en\\docusaurus-plugin-content-docs\\current",
+          "docs": [
+            {
+              "id": "intro",
+              "title": "Introduction to Physical AI & Humanoid Robotics",
+              "description": "- Understand the convergence of AI and robotics in physical embodiments",
+              "source": "@site/../docs/intro.md",
+              "sourceDirName": ".",
+              "slug": "/intro",
+              "permalink": "/docs/intro",
+              "draft": false,
+              "unlisted": false,
+              "tags": [],
+              "version": "current",
+              "frontMatter": {},
+              "sidebar": "docs",
+              "next": {
+                "title": "ROS 2 Fundamentals",
+                "permalink": "/docs/ros2-nodes"
+              }
+            },
+            {
+              "id": "intro_with_quiz",
+              "title": "intro_with_quiz",
+              "description": "",
+              "source": "@site/../docs/intro_with_quiz.md",
+              "sourceDirName": ".",
+              "slug": "/intro_with_quiz",
+              "permalink": "/docs/intro_with_quiz",
+              "draft": false,
+              "unlisted": false,
+              "tags": [],
+              "version": "current",
+              "frontMatter": {}
+            },
+            {
+              "id": "ros2-nodes",
+              "title": "ROS 2 Fundamentals",
+              "description": "- Create and configure ROS 2 nodes",
+              "source": "@site/../docs/ros2-nodes.md",
+              "sourceDirName": ".",
+              "slug": "/ros2-nodes",
+              "permalink": "/docs/ros2-nodes",
+              "draft": false,
+              "unlisted": false,
+              "tags": [],
+              "version": "current",
+              "frontMatter": {},
+              "sidebar": "docs",
+              "previous": {
+                "title": "Introduction to Physical AI & Humanoid Robotics",
+                "permalink": "/docs/intro"
+              }
+            }
+          ],
+          "drafts": [],
+          "sidebars": {
+            "docs": [
+              {
+                "type": "category",
+                "label": "Module 1",
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "intro"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "ros2-nodes"
+                  }
+                ],
+                "collapsed": true,
+                "collapsible": true
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "docusaurus-plugin-content-blog": {
+    "default": {
+      "blogSidebarTitle": "Recent posts",
+      "blogPosts": [],
+      "blogListPaginated": [],
+      "blogTags": {},
+      "blogTagsListPath": "/blog/tags",
+      "blogTagsPaginated": []
+    }
+  },
+  "docusaurus-plugin-content-pages": {
+    "default": [
+      {
+        "type": "jsx",
+        "permalink": "/",
+        "source": "@site/src/pages/index.js"
+      },
+      {
+        "type": "jsx",
+        "permalink": "/login",
+        "source": "@site/src/pages/login.js"
+      },
+      {
+        "type": "jsx",
+        "permalink": "/login",
+        "source": "@site/src/pages/login.tsx"
+      },
+      {
+        "type": "jsx",
+        "permalink": "/signup",
+        "source": "@site/src/pages/signup.js"
+      },
+      {
+        "type": "jsx",
+        "permalink": "/signup",
+        "source": "@site/src/pages/signup.tsx"
+      }
+    ]
+  },
+  "docusaurus-plugin-debug": {},
+  "docusaurus-theme-classic": {},
+  "docusaurus-bootstrap-plugin": {},
+  "docusaurus-mdx-fallback-plugin": {}
+}
