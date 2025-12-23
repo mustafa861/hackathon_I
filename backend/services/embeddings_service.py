@@ -1,7 +1,7 @@
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams, PointStruct
 import google.generativeai as genai
-from backend.config import QDRANT_URL, QDRANT_API_KEY, OPENAI_API_KEY
+from backend.config import QDRANT_URL, QDRANT_API_KEY, API_KEY
 
 COLLECTION_NAME = "textbook_chapters"
 
@@ -9,7 +9,7 @@ client = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
 
 def get_google_client():
     """Get Google Generative AI client, initializing it only when needed"""
-    genai.configure(api_key=OPENAI_API_KEY)  # Using the same env var for now
+    genai.configure(api_key=API_KEY)  # Using the new unified API key variable
     return genai
 
 def setup_collection():
@@ -23,7 +23,7 @@ def setup_collection():
 
 def embed_text(text: str) -> list[float]:
     """Generate embedding using Google's embedding model"""
-    genai.configure(api_key=OPENAI_API_KEY)  # Using the same env var for now
+    genai.configure(api_key=API_KEY)  # Using the new unified API key variable
     model = genai.embed_content(
         model="models/embedding-001",
         content=text,

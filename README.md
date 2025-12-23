@@ -37,7 +37,7 @@ An intelligent textbook platform combining Docusaurus (frontend), FastAPI (backe
 - Node.js 18+
 - PostgreSQL (or Neon Serverless account)
 - Qdrant Cloud account
-- OpenAI API key
+- Google Generative AI API key (Gemini API)
 
 ### Backend Setup
 
@@ -79,7 +79,7 @@ Create a `.env` file in the `backend` directory with the following variables:
 DATABASE_URL=postgresql://username:password@localhost:5432/textbook_db
 QDRANT_URL=https://your-cluster-url.qdrant.tech
 QDRANT_API_KEY=your-qdrant-api-key
-OPENAI_API_KEY=your-openai-api-key
+OPENAI_API_KEY=your-google-generative-api-key
 JWT_SECRET_KEY=your-super-secret-jwt-key-change-in-production
 ```
 
@@ -98,7 +98,7 @@ JWT_SECRET_KEY=your-super-secret-jwt-key-change-in-production
 - **Database**: Neon Serverless Postgres
 - **Vector Store**: Qdrant Cloud
 - **Authentication**: JWT-based (Better-Auth pattern)
-- **AI Framework**: OpenAI API (GPT-4, Ada embedding model)
+- **AI Framework**: Google Generative AI (Gemini Pro, Embedding-001 model)
 - **Deployment**: Vercel/Netlify (frontend), Railway/Render (backend)
 
 ## Development

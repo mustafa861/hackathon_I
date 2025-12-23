@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, Header
 from backend.services.embeddings_service import search_similar
 from backend.services.auth_service import validate_token
 from backend.models.chat_schemas import ChatRequest, ChatResponse
-from backend.config import OPENAI_API_KEY
+from backend.config import API_KEY
 import google.generativeai as genai
 
 router = APIRouter(tags=["chat"])
@@ -26,7 +26,7 @@ def chat_with_textbook(
     context = "\n\n".join(context_parts)
 
     # Generate answer with Google's Generative AI
-    genai.configure(api_key=OPENAI_API_KEY)
+    genai.configure(api_key=API_KEY)
     model = genai.GenerativeModel('gemini-pro')
 
     prompt = f"""Context:\n{context}\n\nQuestion: {request.query}\n\nSelected text: {request.selected_context}
