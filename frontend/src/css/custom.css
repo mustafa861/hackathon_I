@@ -1,0 +1,38 @@
+/* PersonalizeButton styling */
+.personalize-btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.personalize-btn:hover {
+  background-color: #0056b3;
+}
+
+.personalize-btn:disabled {
+  background-color: #6c757d;
+  cursor: wait;
+}
+
+/* TranslateButton styling */
+.translate-btn {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.translate-btn:hover {
+  background-color: #1e7e34;
+}
+
+.translate-btn:disabled {
+  background-color: #6c757d;
+  cursor: wait;
+}
