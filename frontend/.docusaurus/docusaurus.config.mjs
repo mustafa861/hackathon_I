@@ -33,7 +33,7 @@ export default {
       "title": "Physical AI Textbook",
       "logo": {
         "alt": "Physical AI Logo",
-        "src": "img/AI Generated Logo.jpg"
+        "src": "img/download (2).jpg"
       },
       "items": [
         {

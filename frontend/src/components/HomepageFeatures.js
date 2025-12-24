@@ -4,7 +4,8 @@ import styles from './HomepageFeatures.module.css';
 
 // Import the images from static/img directory
 import Image1 from '@site/static/img/download(4).jpg';
-import Image2 from '@site/static/img/download.jpg'; // Using the other image file you have
+import Image2 from '@site/static/img/download (1).jpg';
+import Image3 from '@site/static/img/download.jpg';
 
 const FeatureList = [
   {
@@ -17,11 +18,20 @@ const FeatureList = [
     ),
   },
   {
-    title: 'AI Robots',
+    title: 'AI Concepts',
     image: Image2,
     description: (
       <>
-        Explore how artificial intelligence powers robotic systems for autonomous decision making.
+        Explore AI concepts and how they apply to robotics and intelligent systems.
+      </>
+    ),
+  },
+  {
+    title: 'AI Robots',
+    image: Image3,
+    description: (
+      <>
+        Discover how AI powers robotic systems for autonomous decision making.
       </>
     ),
   },
@@ -29,7 +39,7 @@ const FeatureList = [
 
 function Feature({image, title, description}) {
   return (
-    <div className={clsx('col col--6')}>
+    <div className={clsx('col col--4')}>
       <div className="text--center">
         <img src={image} className={styles.featureImage} alt={title} />
       </div>
