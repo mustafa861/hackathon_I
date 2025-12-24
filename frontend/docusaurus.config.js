@@ -19,7 +19,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          path: 'docs',  // Use the docs directory in the frontend folder
+          path: '../docs',  // Use the docs directory from project root
           routeBasePath: 'docs',
           sidebarPath: require.resolve('./sidebars.js'),
         },
@@ -37,7 +37,7 @@ const config = {
         title: 'Physical AI Textbook',
         logo: {
           alt: 'Physical AI Logo',
-          src: 'img/logo.svg',
+          src: 'img/AI Generated Logo.jpg',
         },
         items: [
           {
@@ -48,40 +48,17 @@ const config = {
           },
           { to: '/signup', label: 'Sign Up', position: 'right' },
           { to: '/login', label: 'Login', position: 'right' },
+          {
+            href: 'https://github.com/mustafa861/hackathon_I',
+            label: 'GitHub',
+            position: 'right',
+          },
         ],
       },
       footer: {
         style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Textbook',
-                to: '/docs/intro',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics Textbook. Built with Docusaurus.`,
+        links: [],
+        copyright: ' ',
       },
       prism: {
         theme: require('prism-react-renderer').themes.github,

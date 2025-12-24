@@ -15,25 +15,47 @@
   --ifm-color-primary-lighter: rgb(255, 255, 255);
   --ifm-color-primary-lightest: rgb(255, 255, 255);
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-background-color: black;
+  --ifm-color-content: white;
+  --ifm-color-content-inverse: white;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #ffffff;
-  --ifm-color-primary-dark: rgb(255, 255, 255);
-  --ifm-color-primary-darker: rgb(255, 255, 255);
-  --ifm-color-primary-darkest: rgb(255, 255, 255);
-  --ifm-color-primary-light: rgb(0, 0, 0);
-  --ifm-color-primary-lighter: rgb(0, 0, 0);
-  --ifm-color-primary-lightest: rgb(0, 0, 0);
+  --ifm-color-primary: #000000;
+  --ifm-color-primary-dark: rgb(0, 0, 0);
+  --ifm-color-primary-darker: rgb(0, 0, 0);
+  --ifm-color-primary-darkest: rgb(0, 0, 0);
+  --ifm-color-primary-light: rgb(255, 255, 255);
+  --ifm-color-primary-lighter: rgb(255, 255, 255);
+  --ifm-color-primary-lightest: rgb(255, 255, 255);
+  --ifm-background-color: black;
+  --ifm-color-content: white;
+  --ifm-color-content-inverse: black;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Global black background with white text */
+html, body {
+  background-color: black !important;
+  color: white !important;
+}
+
+.main-wrapper {
+  background-color: black;
+  color: white;
+}
+
+.container {
+  background-color: black;
+  color: white;
 }
 
 /* PersonalizeButton styling */
 .personalize-btn {
   padding: 10px 20px;
   background-color: #000000;
-  color: white;
+  color: white !important;
   border: 1px solid #000000;
   border-radius: 5px;
   cursor: pointer;
@@ -42,7 +64,7 @@
 
 .personalize-btn:hover {
   background-color: #333333;
-  color: white;
+  color: white !important;
 }
 
 .personalize-btn:disabled {
@@ -54,7 +76,7 @@
 .translate-btn {
   padding: 10px 20px;
   background-color: #000000;
-  color: white;
+  color: white !important;
   border: 1px solid #000000;
   border-radius: 5px;
   cursor: pointer;
@@ -62,10 +84,37 @@
 
 .translate-btn:hover {
   background-color: #333333;
-  color: white;
+  color: white !important;
 }
 
 .translate-btn:disabled {
   background-color: #6c757d;
   cursor: wait;
+}
+
+/* Button styling for signup/login pages */
+.button--primary {
+  background-color: #000000 !important;
+  color: white !important;
+  border: 1px solid #000000 !important;
+}
+
+.button--primary:hover {
+  background-color: #333333 !important;
+  color: white !important;
+}
+
+/* DocItem layout */
+.docItemContainer {
+  background-color: black;
+  color: white;
+}
+
+.markdown {
+  color: white;
+}
+
+/* Footer removal for textbook pages */
+.footer {
+  display: none;
 }

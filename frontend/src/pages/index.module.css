@@ -8,6 +8,8 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  background-color: black;
+  color: white;
 }
 
 @media screen and (max-width: 996px) {
@@ -20,4 +22,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Make entire homepage black with white text */
+html[data-theme='light'] {
+  --ifm-background-color: black;
+  --ifm-color-content: white;
+  --ifm-color-content-inverse: white;
+}
+
+html[data-theme='dark'] {
+  --ifm-background-color: black;
+  --ifm-color-content: white;
+  --ifm-color-content-inverse: white;
+}
+
+body {
+  background-color: black !important;
+  color: white !important;
 }

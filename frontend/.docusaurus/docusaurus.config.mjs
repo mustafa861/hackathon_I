@@ -33,7 +33,7 @@ export default {
       "title": "Physical AI Textbook",
       "logo": {
         "alt": "Physical AI Logo",
-        "src": "img/logo.svg"
+        "src": "img/AI Generated Logo.jpg"
       },
       "items": [
         {
@@ -51,42 +51,19 @@ export default {
           "to": "/login",
           "label": "Login",
           "position": "right"
+        },
+        {
+          "href": "https://github.com/mustafa861/hackathon_I",
+          "label": "GitHub",
+          "position": "right"
         }
       ],
       "hideOnScroll": false
     },
     "footer": {
       "style": "dark",
-      "links": [
-        {
-          "title": "Docs",
-          "items": [
-            {
-              "label": "Textbook",
-              "to": "/docs/intro"
-            }
-          ]
-        },
-        {
-          "title": "Community",
-          "items": [
-            {
-              "label": "Stack Overflow",
-              "href": "https://stackoverflow.com/questions/tagged/docusaurus"
-            }
-          ]
-        },
-        {
-          "title": "More",
-          "items": [
-            {
-              "label": "GitHub",
-              "href": "https://github.com/facebook/docusaurus"
-            }
-          ]
-        }
-      ],
-      "copyright": "Copyright © 2025 Physical AI & Humanoid Robotics Textbook. Built with Docusaurus."
+      "links": [],
+      "copyright": " "
     },
     "prism": {
       "theme": {

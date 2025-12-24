@@ -7,8 +7,9 @@
   color: white;
 }
 
-.featureSvg {
+.featureImage {
   height: 200px;
-  width: 200px;
-  fill: white;
+  width: auto;
+  max-width: 100%;
+  border-radius: 8px;
 }
