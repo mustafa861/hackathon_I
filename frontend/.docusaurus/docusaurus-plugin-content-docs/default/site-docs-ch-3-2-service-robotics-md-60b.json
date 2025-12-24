@@ -1,0 +1,27 @@
+{
+  "id": "ch3_2_service_robotics",
+  "title": "Chapter 3.2 - Service Robotics",
+  "description": "Service robotics encompasses humanoid robots designed to assist humans in various service-oriented tasks, from healthcare to hospitality.",
+  "source": "@site/../docs/ch3_2_service_robotics.md",
+  "sourceDirName": ".",
+  "slug": "/ch3_2_service_robotics",
+  "permalink": "/docs/ch3_2_service_robotics",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 12,
+  "frontMatter": {
+    "sidebar_position": 12,
+    "title": "Chapter 3.2 - Service Robotics"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Chapter 3.1 - Industrial Applications",
+    "permalink": "/docs/ch3_1_industrial_applications"
+  },
+  "next": {
+    "title": "Chapter 3.3 - Future Directions",
+    "permalink": "/docs/ch3_3_future_directions"
+  }
+}

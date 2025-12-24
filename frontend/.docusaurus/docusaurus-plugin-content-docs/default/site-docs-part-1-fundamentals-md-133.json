@@ -1,0 +1,27 @@
+{
+  "id": "part1_fundamentals",
+  "title": "Part 1 - Fundamentals of Physical AI",
+  "description": "This part covers the fundamental concepts of Physical AI - artificial intelligence systems that interact with and operate in the physical world.",
+  "source": "@site/../docs/part1_fundamentals.md",
+  "sourceDirName": ".",
+  "slug": "/part1_fundamentals",
+  "permalink": "/docs/part1_fundamentals",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "title": "Part 1 - Fundamentals of Physical AI"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Introduction to Physical AI & Humanoid Robotics",
+    "permalink": "/docs/intro"
+  },
+  "next": {
+    "title": "Chapter 1.1 - Introduction to Physical AI",
+    "permalink": "/docs/ch1_1_introduction_to_physical_ai"
+  }
+}

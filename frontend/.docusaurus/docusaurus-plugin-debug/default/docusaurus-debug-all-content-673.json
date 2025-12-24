@@ -18,9 +18,248 @@
           "contentPathLocalized": "C:\\Users\\computer lab\\Documents\\GitHub\\hackathon_I\\frontend\\i18n\\en\\docusaurus-plugin-content-docs\\current",
           "docs": [
             {
+              "id": "ch1_1_introduction_to_physical_ai",
+              "title": "Chapter 1.1 - Introduction to Physical AI",
+              "description": "Physical AI represents the intersection of artificial intelligence and the physical world. Unlike traditional AI systems that operate purely in digital domains, Physical AI systems must interact with, understand, and manipulate real-world objects and environments.",
+              "source": "@site/../docs/ch1_1_introduction_to_physical_ai.md",
+              "sourceDirName": ".",
+              "slug": "/ch1_1_introduction_to_physical_ai",
+              "permalink": "/docs/ch1_1_introduction_to_physical_ai",
+              "draft": false,
+              "unlisted": false,
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 3,
+              "frontMatter": {
+                "sidebar_position": 3,
+                "title": "Chapter 1.1 - Introduction to Physical AI"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "Part 1 - Fundamentals of Physical AI",
+                "permalink": "/docs/part1_fundamentals"
+              },
+              "next": {
+                "title": "Chapter 1.2 - Sensing and Perception",
+                "permalink": "/docs/ch1_2_sensing_and_perception"
+              }
+            },
+            {
+              "id": "ch1_2_sensing_and_perception",
+              "title": "Chapter 1.2 - Sensing and Perception",
+              "description": "Sensing and perception form the foundation of Physical AI systems. These systems must accurately interpret sensory data to understand and interact with their environment.",
+              "source": "@site/../docs/ch1_2_sensing_and_perception.md",
+              "sourceDirName": ".",
+              "slug": "/ch1_2_sensing_and_perception",
+              "permalink": "/docs/ch1_2_sensing_and_perception",
+              "draft": false,
+              "unlisted": false,
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 4,
+              "frontMatter": {
+                "sidebar_position": 4,
+                "title": "Chapter 1.2 - Sensing and Perception"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "Chapter 1.1 - Introduction to Physical AI",
+                "permalink": "/docs/ch1_1_introduction_to_physical_ai"
+              },
+              "next": {
+                "title": "Chapter 1.3 - Actuation and Control",
+                "permalink": "/docs/ch1_3_actuation_and_control"
+              }
+            },
+            {
+              "id": "ch1_3_actuation_and_control",
+              "title": "Chapter 1.3 - Actuation and Control",
+              "description": "Actuation and control systems enable Physical AI systems to interact with the physical world through precise movement and manipulation.",
+              "source": "@site/../docs/ch1_3_actuation_and_control.md",
+              "sourceDirName": ".",
+              "slug": "/ch1_3_actuation_and_control",
+              "permalink": "/docs/ch1_3_actuation_and_control",
+              "draft": false,
+              "unlisted": false,
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 5,
+              "frontMatter": {
+                "sidebar_position": 5,
+                "title": "Chapter 1.3 - Actuation and Control"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "Chapter 1.2 - Sensing and Perception",
+                "permalink": "/docs/ch1_2_sensing_and_perception"
+              },
+              "next": {
+                "title": "Part 2 - Humanoid Robotics",
+                "permalink": "/docs/part2_humanoid_robots"
+              }
+            },
+            {
+              "id": "ch2_1_humanoid_robot_design",
+              "title": "Chapter 2.1 - Humanoid Robot Design",
+              "description": "Humanoid robot design involves creating mechanical systems that mimic human form and functionality while achieving specific tasks.",
+              "source": "@site/../docs/ch2_1_humanoid_robot_design.md",
+              "sourceDirName": ".",
+              "slug": "/ch2_1_humanoid_robot_design",
+              "permalink": "/docs/ch2_1_humanoid_robot_design",
+              "draft": false,
+              "unlisted": false,
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 7,
+              "frontMatter": {
+                "sidebar_position": 7,
+                "title": "Chapter 2.1 - Humanoid Robot Design"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "Part 2 - Humanoid Robotics",
+                "permalink": "/docs/part2_humanoid_robots"
+              },
+              "next": {
+                "title": "Chapter 2.2 - Locomotion and Balance",
+                "permalink": "/docs/ch2_2_locomotion_and_balance"
+              }
+            },
+            {
+              "id": "ch2_2_locomotion_and_balance",
+              "title": "Chapter 2.2 - Locomotion and Balance",
+              "description": "Locomotion and balance are fundamental capabilities for humanoid robots, enabling them to move and maintain stability in various environments.",
+              "source": "@site/../docs/ch2_2_locomotion_and_balance.md",
+              "sourceDirName": ".",
+              "slug": "/ch2_2_locomotion_and_balance",
+              "permalink": "/docs/ch2_2_locomotion_and_balance",
+              "draft": false,
+              "unlisted": false,
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 8,
+              "frontMatter": {
+                "sidebar_position": 8,
+                "title": "Chapter 2.2 - Locomotion and Balance"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "Chapter 2.1 - Humanoid Robot Design",
+                "permalink": "/docs/ch2_1_humanoid_robot_design"
+              },
+              "next": {
+                "title": "Chapter 2.3 - Human-Robot Interaction",
+                "permalink": "/docs/ch2_3_human_robot_interaction"
+              }
+            },
+            {
+              "id": "ch2_3_human_robot_interaction",
+              "title": "Chapter 2.3 - Human-Robot Interaction",
+              "description": "Human-Robot Interaction (HRI) focuses on how humans and humanoid robots can effectively communicate and collaborate.",
+              "source": "@site/../docs/ch2_3_human_robot_interaction.md",
+              "sourceDirName": ".",
+              "slug": "/ch2_3_human_robot_interaction",
+              "permalink": "/docs/ch2_3_human_robot_interaction",
+              "draft": false,
+              "unlisted": false,
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 9,
+              "frontMatter": {
+                "sidebar_position": 9,
+                "title": "Chapter 2.3 - Human-Robot Interaction"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "Chapter 2.2 - Locomotion and Balance",
+                "permalink": "/docs/ch2_2_locomotion_and_balance"
+              },
+              "next": {
+                "title": "Part 3 - Advanced Applications",
+                "permalink": "/docs/part3_advanced_applications"
+              }
+            },
+            {
+              "id": "ch3_1_industrial_applications",
+              "title": "Chapter 3.1 - Industrial Applications",
+              "description": "Physical AI and humanoid robotics are revolutionizing industrial processes with advanced automation and human-robot collaboration.",
+              "source": "@site/../docs/ch3_1_industrial_applications.md",
+              "sourceDirName": ".",
+              "slug": "/ch3_1_industrial_applications",
+              "permalink": "/docs/ch3_1_industrial_applications",
+              "draft": false,
+              "unlisted": false,
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 11,
+              "frontMatter": {
+                "sidebar_position": 11,
+                "title": "Chapter 3.1 - Industrial Applications"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "Part 3 - Advanced Applications",
+                "permalink": "/docs/part3_advanced_applications"
+              },
+              "next": {
+                "title": "Chapter 3.2 - Service Robotics",
+                "permalink": "/docs/ch3_2_service_robotics"
+              }
+            },
+            {
+              "id": "ch3_2_service_robotics",
+              "title": "Chapter 3.2 - Service Robotics",
+              "description": "Service robotics encompasses humanoid robots designed to assist humans in various service-oriented tasks, from healthcare to hospitality.",
+              "source": "@site/../docs/ch3_2_service_robotics.md",
+              "sourceDirName": ".",
+              "slug": "/ch3_2_service_robotics",
+              "permalink": "/docs/ch3_2_service_robotics",
+              "draft": false,
+              "unlisted": false,
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 12,
+              "frontMatter": {
+                "sidebar_position": 12,
+                "title": "Chapter 3.2 - Service Robotics"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "Chapter 3.1 - Industrial Applications",
+                "permalink": "/docs/ch3_1_industrial_applications"
+              },
+              "next": {
+                "title": "Chapter 3.3 - Future Directions",
+                "permalink": "/docs/ch3_3_future_directions"
+              }
+            },
+            {
+              "id": "ch3_3_future_directions",
+              "title": "Chapter 3.3 - Future Directions",
+              "description": "This chapter explores emerging trends, research directions, and future possibilities in Physical AI and Humanoid Robotics.",
+              "source": "@site/../docs/ch3_3_future_directions.md",
+              "sourceDirName": ".",
+              "slug": "/ch3_3_future_directions",
+              "permalink": "/docs/ch3_3_future_directions",
+              "draft": false,
+              "unlisted": false,
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 13,
+              "frontMatter": {
+                "sidebar_position": 13,
+                "title": "Chapter 3.3 - Future Directions"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "Chapter 3.2 - Service Robotics",
+                "permalink": "/docs/ch3_2_service_robotics"
+              }
+            },
+            {
               "id": "intro",
               "title": "Introduction to Physical AI & Humanoid Robotics",
-              "description": "- Understand the convergence of AI and robotics in physical embodiments",
+              "description": "Welcome to the comprehensive guide on Physical AI and Humanoid Robotics. This textbook covers the fundamental concepts, advanced techniques, and practical applications of artificial intelligence in physical systems and humanoid robots.",
               "source": "@site/../docs/intro.md",
               "sourceDirName": ".",
               "slug": "/intro",
@@ -29,44 +268,96 @@
               "unlisted": false,
               "tags": [],
               "version": "current",
-              "frontMatter": {},
+              "sidebarPosition": 1,
+              "frontMatter": {
+                "sidebar_position": 1,
+                "title": "Introduction to Physical AI & Humanoid Robotics"
+              },
               "sidebar": "docs",
               "next": {
-                "title": "ROS 2 Fundamentals",
-                "permalink": "/docs/ros2-nodes"
+                "title": "Part 1 - Fundamentals of Physical AI",
+                "permalink": "/docs/part1_fundamentals"
               }
             },
             {
-              "id": "intro_with_quiz",
-              "title": "intro_with_quiz",
-              "description": "",
-              "source": "@site/../docs/intro_with_quiz.md",
+              "id": "part1_fundamentals",
+              "title": "Part 1 - Fundamentals of Physical AI",
+              "description": "This part covers the fundamental concepts of Physical AI - artificial intelligence systems that interact with and operate in the physical world.",
+              "source": "@site/../docs/part1_fundamentals.md",
               "sourceDirName": ".",
-              "slug": "/intro_with_quiz",
-              "permalink": "/docs/intro_with_quiz",
+              "slug": "/part1_fundamentals",
+              "permalink": "/docs/part1_fundamentals",
               "draft": false,
               "unlisted": false,
               "tags": [],
               "version": "current",
-              "frontMatter": {}
-            },
-            {
-              "id": "ros2-nodes",
-              "title": "ROS 2 Fundamentals",
-              "description": "- Create and configure ROS 2 nodes",
-              "source": "@site/../docs/ros2-nodes.md",
-              "sourceDirName": ".",
-              "slug": "/ros2-nodes",
-              "permalink": "/docs/ros2-nodes",
-              "draft": false,
-              "unlisted": false,
-              "tags": [],
-              "version": "current",
-              "frontMatter": {},
+              "sidebarPosition": 2,
+              "frontMatter": {
+                "sidebar_position": 2,
+                "title": "Part 1 - Fundamentals of Physical AI"
+              },
               "sidebar": "docs",
               "previous": {
                 "title": "Introduction to Physical AI & Humanoid Robotics",
                 "permalink": "/docs/intro"
+              },
+              "next": {
+                "title": "Chapter 1.1 - Introduction to Physical AI",
+                "permalink": "/docs/ch1_1_introduction_to_physical_ai"
+              }
+            },
+            {
+              "id": "part2_humanoid_robots",
+              "title": "Part 2 - Humanoid Robotics",
+              "description": "Humanoid robotics focuses on the design, development, and control of robots that resemble human form and behavior.",
+              "source": "@site/../docs/part2_humanoid_robots.md",
+              "sourceDirName": ".",
+              "slug": "/part2_humanoid_robots",
+              "permalink": "/docs/part2_humanoid_robots",
+              "draft": false,
+              "unlisted": false,
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 6,
+              "frontMatter": {
+                "sidebar_position": 6,
+                "title": "Part 2 - Humanoid Robotics"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "Chapter 1.3 - Actuation and Control",
+                "permalink": "/docs/ch1_3_actuation_and_control"
+              },
+              "next": {
+                "title": "Chapter 2.1 - Humanoid Robot Design",
+                "permalink": "/docs/ch2_1_humanoid_robot_design"
+              }
+            },
+            {
+              "id": "part3_advanced_applications",
+              "title": "Part 3 - Advanced Applications",
+              "description": "This part explores advanced applications of Physical AI and Humanoid Robotics in real-world scenarios.",
+              "source": "@site/../docs/part3_advanced_applications.md",
+              "sourceDirName": ".",
+              "slug": "/part3_advanced_applications",
+              "permalink": "/docs/part3_advanced_applications",
+              "draft": false,
+              "unlisted": false,
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 10,
+              "frontMatter": {
+                "sidebar_position": 10,
+                "title": "Part 3 - Advanced Applications"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "Chapter 2.3 - Human-Robot Interaction",
+                "permalink": "/docs/ch2_3_human_robot_interaction"
+              },
+              "next": {
+                "title": "Chapter 3.1 - Industrial Applications",
+                "permalink": "/docs/ch3_1_industrial_applications"
               }
             }
           ],
@@ -75,15 +366,83 @@
             "docs": [
               {
                 "type": "category",
-                "label": "Module 1",
+                "label": "Introduction",
                 "items": [
                   {
                     "type": "doc",
                     "id": "intro"
+                  }
+                ],
+                "collapsed": true,
+                "collapsible": true
+              },
+              {
+                "type": "category",
+                "label": "Part 1: Fundamentals of Physical AI",
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "part1_fundamentals"
                   },
                   {
                     "type": "doc",
-                    "id": "ros2-nodes"
+                    "id": "ch1_1_introduction_to_physical_ai"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "ch1_2_sensing_and_perception"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "ch1_3_actuation_and_control"
+                  }
+                ],
+                "collapsed": true,
+                "collapsible": true
+              },
+              {
+                "type": "category",
+                "label": "Part 2: Humanoid Robotics",
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "part2_humanoid_robots"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "ch2_1_humanoid_robot_design"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "ch2_2_locomotion_and_balance"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "ch2_3_human_robot_interaction"
+                  }
+                ],
+                "collapsed": true,
+                "collapsible": true
+              },
+              {
+                "type": "category",
+                "label": "Part 3: Advanced Applications",
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "part3_advanced_applications"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "ch3_1_industrial_applications"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "ch3_2_service_robotics"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "ch3_3_future_directions"
                   }
                 ],
                 "collapsed": true,

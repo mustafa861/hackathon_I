@@ -1,0 +1,27 @@
+{
+  "id": "part2_humanoid_robots",
+  "title": "Part 2 - Humanoid Robotics",
+  "description": "Humanoid robotics focuses on the design, development, and control of robots that resemble human form and behavior.",
+  "source": "@site/../docs/part2_humanoid_robots.md",
+  "sourceDirName": ".",
+  "slug": "/part2_humanoid_robots",
+  "permalink": "/docs/part2_humanoid_robots",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "sidebar_position": 6,
+    "title": "Part 2 - Humanoid Robotics"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Chapter 1.3 - Actuation and Control",
+    "permalink": "/docs/ch1_3_actuation_and_control"
+  },
+  "next": {
+    "title": "Chapter 2.1 - Humanoid Robot Design",
+    "permalink": "/docs/ch2_1_humanoid_robot_design"
+  }
+}

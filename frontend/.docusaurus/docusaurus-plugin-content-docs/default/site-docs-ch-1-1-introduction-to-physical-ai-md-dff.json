@@ -1,0 +1,27 @@
+{
+  "id": "ch1_1_introduction_to_physical_ai",
+  "title": "Chapter 1.1 - Introduction to Physical AI",
+  "description": "Physical AI represents the intersection of artificial intelligence and the physical world. Unlike traditional AI systems that operate purely in digital domains, Physical AI systems must interact with, understand, and manipulate real-world objects and environments.",
+  "source": "@site/../docs/ch1_1_introduction_to_physical_ai.md",
+  "sourceDirName": ".",
+  "slug": "/ch1_1_introduction_to_physical_ai",
+  "permalink": "/docs/ch1_1_introduction_to_physical_ai",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "title": "Chapter 1.1 - Introduction to Physical AI"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Part 1 - Fundamentals of Physical AI",
+    "permalink": "/docs/part1_fundamentals"
+  },
+  "next": {
+    "title": "Chapter 1.2 - Sensing and Perception",
+    "permalink": "/docs/ch1_2_sensing_and_perception"
+  }
+}

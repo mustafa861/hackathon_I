@@ -1,0 +1,27 @@
+{
+  "id": "ch2_2_locomotion_and_balance",
+  "title": "Chapter 2.2 - Locomotion and Balance",
+  "description": "Locomotion and balance are fundamental capabilities for humanoid robots, enabling them to move and maintain stability in various environments.",
+  "source": "@site/../docs/ch2_2_locomotion_and_balance.md",
+  "sourceDirName": ".",
+  "slug": "/ch2_2_locomotion_and_balance",
+  "permalink": "/docs/ch2_2_locomotion_and_balance",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 8,
+  "frontMatter": {
+    "sidebar_position": 8,
+    "title": "Chapter 2.2 - Locomotion and Balance"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Chapter 2.1 - Humanoid Robot Design",
+    "permalink": "/docs/ch2_1_humanoid_robot_design"
+  },
+  "next": {
+    "title": "Chapter 2.3 - Human-Robot Interaction",
+    "permalink": "/docs/ch2_3_human_robot_interaction"
+  }
+}

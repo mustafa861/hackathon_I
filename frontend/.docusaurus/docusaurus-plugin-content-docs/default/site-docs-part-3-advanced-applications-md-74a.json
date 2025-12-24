@@ -1,0 +1,27 @@
+{
+  "id": "part3_advanced_applications",
+  "title": "Part 3 - Advanced Applications",
+  "description": "This part explores advanced applications of Physical AI and Humanoid Robotics in real-world scenarios.",
+  "source": "@site/../docs/part3_advanced_applications.md",
+  "sourceDirName": ".",
+  "slug": "/part3_advanced_applications",
+  "permalink": "/docs/part3_advanced_applications",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 10,
+  "frontMatter": {
+    "sidebar_position": 10,
+    "title": "Part 3 - Advanced Applications"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Chapter 2.3 - Human-Robot Interaction",
+    "permalink": "/docs/ch2_3_human_robot_interaction"
+  },
+  "next": {
+    "title": "Chapter 3.1 - Industrial Applications",
+    "permalink": "/docs/ch3_1_industrial_applications"
+  }
+}

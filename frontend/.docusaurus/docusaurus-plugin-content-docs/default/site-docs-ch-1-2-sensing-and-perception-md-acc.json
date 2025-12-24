@@ -1,0 +1,27 @@
+{
+  "id": "ch1_2_sensing_and_perception",
+  "title": "Chapter 1.2 - Sensing and Perception",
+  "description": "Sensing and perception form the foundation of Physical AI systems. These systems must accurately interpret sensory data to understand and interact with their environment.",
+  "source": "@site/../docs/ch1_2_sensing_and_perception.md",
+  "sourceDirName": ".",
+  "slug": "/ch1_2_sensing_and_perception",
+  "permalink": "/docs/ch1_2_sensing_and_perception",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4,
+    "title": "Chapter 1.2 - Sensing and Perception"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Chapter 1.1 - Introduction to Physical AI",
+    "permalink": "/docs/ch1_1_introduction_to_physical_ai"
+  },
+  "next": {
+    "title": "Chapter 1.3 - Actuation and Control",
+    "permalink": "/docs/ch1_3_actuation_and_control"
+  }
+}

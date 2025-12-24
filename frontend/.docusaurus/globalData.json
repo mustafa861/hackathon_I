@@ -11,17 +11,68 @@
           "mainDocId": "intro",
           "docs": [
             {
+              "id": "ch1_1_introduction_to_physical_ai",
+              "path": "/docs/ch1_1_introduction_to_physical_ai",
+              "sidebar": "docs"
+            },
+            {
+              "id": "ch1_2_sensing_and_perception",
+              "path": "/docs/ch1_2_sensing_and_perception",
+              "sidebar": "docs"
+            },
+            {
+              "id": "ch1_3_actuation_and_control",
+              "path": "/docs/ch1_3_actuation_and_control",
+              "sidebar": "docs"
+            },
+            {
+              "id": "ch2_1_humanoid_robot_design",
+              "path": "/docs/ch2_1_humanoid_robot_design",
+              "sidebar": "docs"
+            },
+            {
+              "id": "ch2_2_locomotion_and_balance",
+              "path": "/docs/ch2_2_locomotion_and_balance",
+              "sidebar": "docs"
+            },
+            {
+              "id": "ch2_3_human_robot_interaction",
+              "path": "/docs/ch2_3_human_robot_interaction",
+              "sidebar": "docs"
+            },
+            {
+              "id": "ch3_1_industrial_applications",
+              "path": "/docs/ch3_1_industrial_applications",
+              "sidebar": "docs"
+            },
+            {
+              "id": "ch3_2_service_robotics",
+              "path": "/docs/ch3_2_service_robotics",
+              "sidebar": "docs"
+            },
+            {
+              "id": "ch3_3_future_directions",
+              "path": "/docs/ch3_3_future_directions",
+              "sidebar": "docs"
+            },
+            {
               "id": "intro",
               "path": "/docs/intro",
               "sidebar": "docs"
             },
             {
-              "id": "intro_with_quiz",
-              "path": "/docs/intro_with_quiz"
+              "id": "part1_fundamentals",
+              "path": "/docs/part1_fundamentals",
+              "sidebar": "docs"
             },
             {
-              "id": "ros2-nodes",
-              "path": "/docs/ros2-nodes",
+              "id": "part2_humanoid_robots",
+              "path": "/docs/part2_humanoid_robots",
+              "sidebar": "docs"
+            },
+            {
+              "id": "part3_advanced_applications",
+              "path": "/docs/part3_advanced_applications",
               "sidebar": "docs"
             }
           ],

@@ -1,0 +1,23 @@
+{
+  "id": "ch3_3_future_directions",
+  "title": "Chapter 3.3 - Future Directions",
+  "description": "This chapter explores emerging trends, research directions, and future possibilities in Physical AI and Humanoid Robotics.",
+  "source": "@site/../docs/ch3_3_future_directions.md",
+  "sourceDirName": ".",
+  "slug": "/ch3_3_future_directions",
+  "permalink": "/docs/ch3_3_future_directions",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 13,
+  "frontMatter": {
+    "sidebar_position": 13,
+    "title": "Chapter 3.3 - Future Directions"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Chapter 3.2 - Service Robotics",
+    "permalink": "/docs/ch3_2_service_robotics"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "ch2_3_human_robot_interaction",
+  "title": "Chapter 2.3 - Human-Robot Interaction",
+  "description": "Human-Robot Interaction (HRI) focuses on how humans and humanoid robots can effectively communicate and collaborate.",
+  "source": "@site/../docs/ch2_3_human_robot_interaction.md",
+  "sourceDirName": ".",
+  "slug": "/ch2_3_human_robot_interaction",
+  "permalink": "/docs/ch2_3_human_robot_interaction",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 9,
+  "frontMatter": {
+    "sidebar_position": 9,
+    "title": "Chapter 2.3 - Human-Robot Interaction"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Chapter 2.2 - Locomotion and Balance",
+    "permalink": "/docs/ch2_2_locomotion_and_balance"
+  },
+  "next": {
+    "title": "Part 3 - Advanced Applications",
+    "permalink": "/docs/part3_advanced_applications"
+  }
+}

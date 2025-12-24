@@ -1,0 +1,27 @@
+{
+  "id": "ch2_1_humanoid_robot_design",
+  "title": "Chapter 2.1 - Humanoid Robot Design",
+  "description": "Humanoid robot design involves creating mechanical systems that mimic human form and functionality while achieving specific tasks.",
+  "source": "@site/../docs/ch2_1_humanoid_robot_design.md",
+  "sourceDirName": ".",
+  "slug": "/ch2_1_humanoid_robot_design",
+  "permalink": "/docs/ch2_1_humanoid_robot_design",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "sidebar_position": 7,
+    "title": "Chapter 2.1 - Humanoid Robot Design"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Part 2 - Humanoid Robotics",
+    "permalink": "/docs/part2_humanoid_robots"
+  },
+  "next": {
+    "title": "Chapter 2.2 - Locomotion and Balance",
+    "permalink": "/docs/ch2_2_locomotion_and_balance"
+  }
+}

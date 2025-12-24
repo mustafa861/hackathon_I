@@ -1,7 +1,7 @@
 {
   "id": "intro",
   "title": "Introduction to Physical AI & Humanoid Robotics",
-  "description": "- Understand the convergence of AI and robotics in physical embodiments",
+  "description": "Welcome to the comprehensive guide on Physical AI and Humanoid Robotics. This textbook covers the fundamental concepts, advanced techniques, and practical applications of artificial intelligence in physical systems and humanoid robots.",
   "source": "@site/../docs/intro.md",
   "sourceDirName": ".",
   "slug": "/intro",
@@ -10,10 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {},
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "title": "Introduction to Physical AI & Humanoid Robotics"
+  },
   "sidebar": "docs",
   "next": {
-    "title": "ROS 2 Fundamentals",
-    "permalink": "/docs/ros2-nodes"
+    "title": "Part 1 - Fundamentals of Physical AI",
+    "permalink": "/docs/part1_fundamentals"
   }
 }
