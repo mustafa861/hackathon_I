@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
+import { API_BASE_URL } from '../constants/api';
 
 export function ChatWidget() {
-  const { user, isAuthenticated } = useAuth();
+  const { user, isAuthenticated, login } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
-
-  if (!isAuthenticated) return null;
 
   const sendMessage = async () => {
     if (!query.trim()) return;
@@ -17,17 +16,36 @@ export function ChatWidget() {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8000/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${user.token}`,
-        },
-        body: JSON.stringify({ query, selected_context: '' }),
-      });
+      // Create a simple request without authentication for guest users
+      const requestBody = {
+        query,
+        selected_context: '',
+      };
 
-      const data = await response.json();
-      setMessages(prev => [...prev, { role: 'assistant', content: data.answer }]);
+      // Include user info if available, otherwise proceed as guest
+      if (isAuthenticated && user && user.token) {
+        const response = await fetch(`${API_BASE_URL}/chat`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${user.token}`,
+          },
+          body: JSON.stringify(requestBody),
+        });
+        const data = await response.json();
+        setMessages(prev => [...prev, { role: 'assistant', content: data.answer }]);
+      } else {
+        // For guests, make request without authentication
+        const response = await fetch(`${API_BASE_URL}/chat`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(requestBody),
+        });
+        const data = await response.json();
+        setMessages(prev => [...prev, { role: 'assistant', content: data.answer }]);
+      }
     } catch (error) {
       console.error('Chat error:', error);
       setMessages(prev => [...prev, { role: 'assistant', content: 'Error occurred while processing your request.' }]);
@@ -46,9 +64,9 @@ export function ChatWidget() {
             width: '60px',
             height: '60px',
             borderRadius: '50%',
-            backgroundColor: '#007bff',
+            backgroundColor: '#000000',
             color: 'white',
-            border: 'none',
+            border: '1px solid #000000',
             fontSize: '24px',
             cursor: 'pointer',
           }}
@@ -64,20 +82,21 @@ export function ChatWidget() {
           boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
           display: 'flex',
           flexDirection: 'column',
+          border: '1px solid black',
         }}>
-          <div style={{ padding: '15px', borderBottom: '1px solid #ddd', display: 'flex', justifyContent: 'space-between' }}>
+          <div style={{ padding: '15px', borderBottom: '1px solid #ddd', display: 'flex', justifyContent: 'space-between', backgroundColor: '#000000', color: 'white' }}>
             <span style={{ fontWeight: 'bold' }}>Textbook Assistant</span>
-            <button onClick={() => setIsOpen(false)} style={{ border: 'none', background: 'none', cursor: 'pointer' }}>✕</button>
+            <button onClick={() => setIsOpen(false)} style={{ border: 'none', background: 'none', cursor: 'pointer', color: 'white', fontSize: '18px' }}>✕</button>
           </div>
 
-          <div style={{ flex: 1, overflowY: 'auto', padding: '15px' }}>
+          <div style={{ flex: 1, overflowY: 'auto', padding: '15px', backgroundColor: '#ffffff', color: 'black' }}>
             {messages.map((msg, idx) => (
               <div key={idx} style={{ marginBottom: '10px', textAlign: msg.role === 'user' ? 'right' : 'left' }}>
                 <div style={{
                   display: 'inline-block',
                   padding: '8px 12px',
                   borderRadius: '8px',
-                  backgroundColor: msg.role === 'user' ? '#007bff' : '#f0f0f0',
+                  backgroundColor: msg.role === 'user' ? '#000000' : '#f0f0f0',
                   color: msg.role === 'user' ? 'white' : 'black',
                   maxWidth: '80%',
                 }}>
@@ -87,20 +106,20 @@ export function ChatWidget() {
             ))}
           </div>
 
-          <div style={{ padding: '15px', borderTop: '1px solid #ddd', display: 'flex' }}>
+          <div style={{ padding: '15px', borderTop: '1px solid #ddd', display: 'flex', backgroundColor: '#ffffff' }}>
             <input
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && !loading && sendMessage()}
               placeholder="Ask a question..."
-              style={{ flex: 1, padding: '8px', borderRadius: '4px', border: '1px solid #ddd' }}
+              style={{ flex: 1, padding: '8px', borderRadius: '4px', border: '1px solid #000000', backgroundColor: '#ffffff', color: 'black' }}
               disabled={loading}
             />
             <button
               onClick={sendMessage}
               disabled={loading}
-              style={{ marginLeft: '10px', padding: '8px 15px', borderRadius: '4px', backgroundColor: '#007bff', color: 'white', border: 'none' }}
+              style={{ marginLeft: '10px', padding: '8px 15px', borderRadius: '4px', backgroundColor: '#000000', color: 'white', border: '1px solid #000000' }}
             >
               Send
             </button>

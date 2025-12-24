@@ -7,20 +7,21 @@ export function TranslateButton({ chapterSlug, originalContent, onContentChange 
   const { translateChapter, loading } = useSkills();
   const [isTranslated, setIsTranslated] = useState(false);
 
-  if (!isAuthenticated) return null;
-
   const handleClick = async () => {
     if (isTranslated) {
       onContentChange(originalContent);
       setIsTranslated(false);
     } else {
       try {
+        // Try to call the translation function without authentication
+        // The useSkills hook will handle the API call
         const translated = await translateChapter(chapterSlug, originalContent);
         onContentChange(translated);
         setIsTranslated(true);
       } catch (error) {
         console.error('Translation error:', error);
-        alert('Failed to translate content');
+        // If it fails, we can still show an error but not require login
+        alert('Could not translate content at this time');
       }
     }
   };
@@ -29,14 +30,7 @@ export function TranslateButton({ chapterSlug, originalContent, onContentChange 
     <button
       onClick={handleClick}
       disabled={loading}
-      style={{
-        padding: '10px 20px',
-        backgroundColor: isTranslated ? '#888' : '#28a745',
-        color: 'white',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: loading ? 'wait' : 'pointer',
-      }}
+      className="translate-btn"
     >
       {loading ? 'Translating...' : isTranslated ? 'Show English' : 'Read in Urdu'}
     </button>

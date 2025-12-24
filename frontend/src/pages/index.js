@@ -28,13 +28,14 @@ function HomepageHeader() {
 
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
+
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
       description="Interactive Learning with AI Agents">
       <HomepageHeader />
       <main>
-        {/* Features section would go here */}
+        <HomepageFeatures />
       </main>
     </Layout>
   );

@@ -11,27 +11,29 @@ router = APIRouter(prefix="/api", tags=["personalization"])
 @router.post("/personalize", response_model=PersonalizeResponse)
 def personalize_chapter(
     request: PersonalizeRequest,
-    authorization: str = Header(...),
+    authorization: str = Header(None),
     db: Session = Depends(get_db)
 ):
-    # Validate token
-    token = authorization.replace("Bearer ", "")
-    payload = validate_token(token)
-    if not payload:
-        raise HTTPException(status_code=401, detail="Invalid token")
-
-    user_id = int(payload["sub"])
-
-    # Fetch user profile
-    user = db.query(User).filter(User.id == user_id).first()
-    if not user:
-        raise HTTPException(status_code=404, detail="User not found")
-
+    # Check if user is authenticated
     profile = {
-        "python_knowledge": user.python_knowledge,
-        "has_nvidia_gpu": user.has_nvidia_gpu,
-        "experience_level": user.experience_level.value
+        "python_knowledge": False,  # Default for guests
+        "has_nvidia_gpu": False,    # Default for guests
+        "experience_level": "beginner"  # Default for guests
     }
+
+    if authorization:
+        # User is authenticated, get their profile
+        token = authorization.replace("Bearer ", "")
+        payload = validate_token(token)
+        if payload:
+            user_id = int(payload["sub"])
+            user = db.query(User).filter(User.id == user_id).first()
+            if user:
+                profile = {
+                    "python_knowledge": user.python_knowledge,
+                    "has_nvidia_gpu": user.has_nvidia_gpu,
+                    "experience_level": user.experience_level.value
+                }
 
     # Invoke personalizer skill
     try:

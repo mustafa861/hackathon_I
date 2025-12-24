@@ -119,18 +119,8 @@
       },
       {
         "type": "jsx",
-        "permalink": "/login",
-        "source": "@site/src/pages/login.tsx"
-      },
-      {
-        "type": "jsx",
         "permalink": "/signup",
         "source": "@site/src/pages/signup.js"
-      },
-      {
-        "type": "jsx",
-        "permalink": "/signup",
-        "source": "@site/src/pages/signup.tsx"
       }
     ]
   },

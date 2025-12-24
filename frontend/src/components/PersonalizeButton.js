@@ -7,22 +7,23 @@ export function PersonalizeButton({ chapterSlug, originalContent, onContentChang
   const { personalizeChapter, loading } = useSkills();
   const [isPersonalized, setIsPersonalized] = useState(false);
 
-  if (!isAuthenticated) return null;  // Hide button for guests
-
   const handleClick = async () => {
     if (isPersonalized) {
       // Restore original
       onContentChange(originalContent);
       setIsPersonalized(false);
     } else {
-      // Personalize
+      // Personalize - try without authentication first
       try {
+        // Try to call the personalization function without authentication
+        // The useSkills hook will handle the API call
         const personalized = await personalizeChapter(chapterSlug, originalContent);
         onContentChange(personalized);
         setIsPersonalized(true);
       } catch (error) {
         console.error('Personalization error:', error);
-        alert('Failed to personalize content');
+        // If it fails, we can still show an error but not require login
+        alert('Could not personalize content at this time');
       }
     }
   };
@@ -32,15 +33,6 @@ export function PersonalizeButton({ chapterSlug, originalContent, onContentChang
       onClick={handleClick}
       disabled={loading}
       className={loading ? "translate-btn" : "personalize-btn"}
-      style={{
-        padding: '10px 20px',
-        backgroundColor: isPersonalized ? '#888' : '#007bff',
-        color: 'white',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: loading ? 'wait' : 'pointer',
-        marginRight: '10px',
-      }}
     >
       {loading ? 'Personalizing...' : isPersonalized ? 'Show Original' : 'Personalize'}
     </button>

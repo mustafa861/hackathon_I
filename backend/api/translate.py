@@ -8,13 +8,15 @@ router = APIRouter(prefix="/api", tags=["translation"])
 @router.post("/translate", response_model=TranslateResponse)
 def translate_chapter(
     request: TranslateRequest,
-    authorization: str = Header(...)
+    authorization: str = Header(None)
 ):
-    # Validate token
-    token = authorization.replace("Bearer ", "")
-    payload = validate_token(token)
-    if not payload:
-        raise HTTPException(status_code=401, detail="Invalid token")
+    # Authentication is optional - check if user is authenticated
+    if authorization:
+        # User is authenticated, validate token
+        token = authorization.replace("Bearer ", "")
+        payload = validate_token(token)
+        if not payload:
+            raise HTTPException(status_code=401, detail="Invalid token")
 
     # Invoke translator skill
     try:

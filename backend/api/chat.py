@@ -10,13 +10,15 @@ router = APIRouter(tags=["chat"])
 @router.post("/chat", response_model=ChatResponse)
 def chat_with_textbook(
     request: ChatRequest,
-    authorization: str = Header(...)
+    authorization: str = Header(None)
 ):
-    # Validate token
-    token = authorization.replace("Bearer ", "")
-    payload = validate_token(token)
-    if not payload:
-        raise HTTPException(status_code=401, detail="Invalid token")
+    # Authentication is optional - check if user is authenticated
+    if authorization:
+        # User is authenticated, validate token
+        token = authorization.replace("Bearer ", "")
+        payload = validate_token(token)
+        if not payload:
+            raise HTTPException(status_code=401, detail="Invalid token")
 
     # Search Qdrant for relevant sections
     results = search_similar(request.query + " " + request.selected_context, limit=3)

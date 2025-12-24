@@ -19,7 +19,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          path: '../docs',  // Use the docs directory from project root
+          path: 'docs',  // Use the docs directory in the frontend folder
           routeBasePath: 'docs',
           sidebarPath: require.resolve('./sidebars.js'),
         },

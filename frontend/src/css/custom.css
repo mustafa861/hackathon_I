@@ -7,41 +7,42 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: rgb(33, 175, 144);
-  --ifm-color-primary-darker: rgb(31, 165, 136);
-  --ifm-color-primary-darkest: rgb(26, 136, 112);
-  --ifm-color-primary-light: rgb(70, 203, 174);
-  --ifm-color-primary-lighter: rgb(102, 212, 189);
-  --ifm-color-primary-lightest: rgb(146, 224, 208);
+  --ifm-color-primary: #000000;
+  --ifm-color-primary-dark: rgb(0, 0, 0);
+  --ifm-color-primary-darker: rgb(0, 0, 0);
+  --ifm-color-primary-darkest: rgb(0, 0, 0);
+  --ifm-color-primary-light: rgb(255, 255, 255);
+  --ifm-color-primary-lighter: rgb(255, 255, 255);
+  --ifm-color-primary-lightest: rgb(255, 255, 255);
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: rgb(33, 175, 144);
-  --ifm-color-primary-darker: rgb(31, 165, 136);
-  --ifm-color-primary-darkest: rgb(26, 136, 112);
-  --ifm-color-primary-light: rgb(70, 203, 174);
-  --ifm-color-primary-lighter: rgb(102, 212, 189);
-  --ifm-color-primary-lightest: rgb(146, 224, 208);
+  --ifm-color-primary: #ffffff;
+  --ifm-color-primary-dark: rgb(255, 255, 255);
+  --ifm-color-primary-darker: rgb(255, 255, 255);
+  --ifm-color-primary-darkest: rgb(255, 255, 255);
+  --ifm-color-primary-light: rgb(0, 0, 0);
+  --ifm-color-primary-lighter: rgb(0, 0, 0);
+  --ifm-color-primary-lightest: rgb(0, 0, 0);
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
 /* PersonalizeButton styling */
 .personalize-btn {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #000000;
   color: white;
-  border: none;
+  border: 1px solid #000000;
   border-radius: 5px;
   cursor: pointer;
   margin-right: 10px;
 }
 
 .personalize-btn:hover {
-  background-color: #0056b3;
+  background-color: #333333;
+  color: white;
 }
 
 .personalize-btn:disabled {
@@ -52,15 +53,16 @@
 /* TranslateButton styling */
 .translate-btn {
   padding: 10px 20px;
-  background-color: #28a745;
+  background-color: #000000;
   color: white;
-  border: none;
+  border: 1px solid #000000;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .translate-btn:hover {
-  background-color: #1e7e34;
+  background-color: #333333;
+  color: white;
 }
 
 .translate-btn:disabled {

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { API_BASE_URL } from '../constants/api';
 
 export function useAuth() {
   const [user, setUser] = useState(null);
@@ -13,7 +14,7 @@ export function useAuth() {
   }, []);
 
   const login = async (email, password) => {
-    const response = await fetch('http://localhost:8000/auth/login', {
+    const response = await fetch(`${API_BASE_URL}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
@@ -28,7 +29,7 @@ export function useAuth() {
   };
 
   const signup = async (email, password, python_knowledge, has_nvidia_gpu) => {
-    const response = await fetch('http://localhost:8000/auth/signup', {
+    const response = await fetch(`${API_BASE_URL}/auth/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password, python_knowledge, has_nvidia_gpu }),

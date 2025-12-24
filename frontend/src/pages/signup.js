@@ -1,31 +1,36 @@
 import React, { useState } from 'react';
 import Layout from '@theme/Layout';
 
+const API_BASE_URL = 'http://127.0.0.1:8000';
+
 export default function SignupPage() {
   const [formData, setFormData] = useState({
     email: '',
-    password: '',
-    pythonKnowledge: false,
-    hasNvidiaGpu: false
+    password: ''
   });
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: value
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8000/auth/signup', {
+      const response = await fetch(`${API_BASE_URL}/auth/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+        email: formData.email,
+        password: formData.password,
+        python_knowledge: false,
+        has_nvidia_gpu: false
+      })
       });
 
       if (response.ok) {
@@ -74,30 +79,6 @@ export default function SignupPage() {
                   required
                   className="form-control"
                 />
-              </div>
-
-              <div className="margin-bottom--sm">
-                <label>
-                  <input
-                    type="checkbox"
-                    name="pythonKnowledge"
-                    checked={formData.pythonKnowledge}
-                    onChange={handleChange}
-                  />
-                  {' '}Do you know Python?
-                </label>
-              </div>
-
-              <div className="margin-bottom--sm">
-                <label>
-                  <input
-                    type="checkbox"
-                    name="hasNvidiaGpu"
-                    checked={formData.hasNvidiaGpu}
-                    onChange={handleChange}
-                  />
-                  {' '}Do you have an NVIDIA GPU?
-                </label>
               </div>
 
               <button type="submit" className="button button--primary">

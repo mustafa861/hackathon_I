@@ -49,22 +49,8 @@
     },
     "config": "config---login-5-e-9-d49"
   },
-  "/login-9ad": {
-    "__comp": "__comp---site-src-pages-login-tsx-34-b-c7d",
-    "__context": {
-      "plugin": "plugin---login-740-46e"
-    },
-    "config": "config---login-5-e-9-d49"
-  },
   "/signup-6ab": {
     "__comp": "__comp---site-src-pages-signup-js-83-a-147",
-    "__context": {
-      "plugin": "plugin---login-740-46e"
-    },
-    "config": "config---login-5-e-9-d49"
-  },
-  "/signup-20b": {
-    "__comp": "__comp---site-src-pages-signup-tsx-8-d-9-369",
     "__context": {
       "plugin": "plugin---login-740-46e"
     },

@@ -18,28 +18,20 @@ export default function LayoutWrapper(props) {
 
   return (
     <>
-      {isAuthenticated && (
-        <div style={{ marginBottom: '20px', padding: '10px', backgroundColor: '#f9f9f9', borderRadius: '5px' }}>
-          <PersonalizeButton
-            chapterSlug={props.content?.metadata?.slug || 'unknown'}
-            originalContent={originalContent}
-            onContentChange={handleContentChange}
-          />
-          <TranslateButton
-            chapterSlug={props.content?.metadata?.slug || 'unknown'}
-            originalContent={originalContent}
-            onContentChange={handleContentChange}
-          />
-        </div>
-      )}
+      <div style={{ marginBottom: '20px', padding: '10px', backgroundColor: '#f9f9f9', borderRadius: '5px' }}>
+        <PersonalizeButton
+          chapterSlug={props.content?.metadata?.slug || 'unknown'}
+          originalContent={originalContent}
+          onContentChange={handleContentChange}
+        />
+        <TranslateButton
+          chapterSlug={props.content?.metadata?.slug || 'unknown'}
+          originalContent={originalContent}
+          onContentChange={handleContentChange}
+        />
+      </div>
 
-      {content ? (
-        <div className="markdown">
-          {content}
-        </div>
-      ) : (
-        <Layout {...props} />
-      )}
+      <Layout {...props} />
 
       <ChatWidget />
     </>

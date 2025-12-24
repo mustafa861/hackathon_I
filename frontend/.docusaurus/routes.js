@@ -43,18 +43,8 @@ export default [
     exact: true
   },
   {
-    path: '/login',
-    component: ComponentCreator('/login', '9ad'),
-    exact: true
-  },
-  {
     path: '/signup',
     component: ComponentCreator('/signup', '6ab'),
-    exact: true
-  },
-  {
-    path: '/signup',
-    component: ComponentCreator('/signup', '20b'),
     exact: true
   },
   {
