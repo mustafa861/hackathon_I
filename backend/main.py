@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from backend.api import auth, chat, personalize, translate
-from backend.database import Base, engine
-from backend.services.embeddings_service import setup_collection
+from api import auth, chat, personalize, translate
+from database import Base, engine
+from services.embeddings_service import setup_collection
 
 app = FastAPI(title="Physical AI Textbook API", version="1.0.0")
 

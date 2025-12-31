@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException, Header
-from backend.services.embeddings_service import search_similar
-from backend.services.auth_service import validate_token
-from backend.models.chat_schemas import ChatRequest, ChatResponse
-from backend.config import API_KEY
+from services.embeddings_service import search_similar
+from services.auth_service import validate_token
+from models.chat_schemas import ChatRequest, ChatResponse
+from config import API_KEY
 import google.generativeai as genai
 
 router = APIRouter(tags=["chat"])

@@ -1,71 +1,125 @@
-import subprocess
 import json
 import os
 from typing import Dict
+import google.generativeai as genai
+from config import API_KEY
 
 class SkillRunner:
-    """Service for invoking agent skills via subprocess (Constitution Principle II)"""
+    """Service for invoking agent skills directly (avoiding subprocess encoding issues)"""
 
-    SKILL_TIMEOUT = 15  # seconds
+    @staticmethod
+    def _get_model():
+        """Get configured Gemini model"""
+        if not API_KEY:
+            raise RuntimeError("API_KEY not configured")
+        genai.configure(api_key=API_KEY)
+        return genai.GenerativeModel('gemini-2.5-flash')
 
     @staticmethod
     def run_quiz_generator(markdown: str) -> str:
         """Generate quiz for chapter markdown"""
-        env = os.environ.copy()
-        env['GOOGLE_API_KEY'] = os.getenv('OPENAI_API_KEY')  # Map to Google API key
+        try:
+            model = SkillRunner._get_model()
 
-        result = subprocess.run(
-            ["python", "skills/quiz_agent.py"],
-            input=markdown,
-            capture_output=True,
-            text=True,
-            timeout=SkillRunner.SKILL_TIMEOUT,
-            env=env
-        )
+            prompt = f"""
+            Generate a quiz based on the following textbook content.
+            Create 5 multiple-choice questions with 4 options each.
+            Include the correct answer for each question.
+            Format the output as clear questions with options and answers.
 
-        if result.returncode != 0:
-            raise RuntimeError(f"Quiz generation failed: {result.stderr}")
+            Textbook content:
+            {markdown}
 
-        return result.stdout
+            Please provide the quiz in a clear, formatted way.
+            """
+
+            response = model.generate_content(prompt)
+
+            # Handle response properly
+            if response.text:
+                return response.text
+            elif hasattr(response, 'candidates') and response.candidates:
+                candidate = response.candidates[0]
+                if hasattr(candidate, 'content') and candidate.content.parts:
+                    text_content = ''.join([part.text for part in candidate.content.parts if hasattr(part, 'text')])
+                    return text_content or "Quiz could not be generated."
+
+            return "Quiz could not be generated."
+
+        except Exception as e:
+            raise RuntimeError(f"Quiz generation failed: {str(e)}")
 
     @staticmethod
     def run_translator(markdown: str) -> str:
         """Translate markdown to Urdu"""
-        env = os.environ.copy()
-        env['GOOGLE_API_KEY'] = os.getenv('OPENAI_API_KEY')  # Map to Google API key
+        try:
+            model = SkillRunner._get_model()
 
-        result = subprocess.run(
-            ["python", "skills/translator_agent.py"],
-            input=markdown,
-            capture_output=True,
-            text=True,
-            timeout=SkillRunner.SKILL_TIMEOUT,
-            env=env
-        )
+            prompt = f"""
+            Translate the following English text to Urdu.
+            Preserve the meaning and context accurately.
+            Make sure technical terms are appropriately translated or kept in English if there's no direct Urdu equivalent.
 
-        if result.returncode != 0:
-            raise RuntimeError(f"Translation failed: {result.stderr}")
+            Text to translate:
+            {markdown}
 
-        return result.stdout
+            Please provide only the translated text in Urdu, nothing else.
+            """
+
+            response = model.generate_content(prompt)
+
+            # Handle response properly
+            if response.text:
+                return response.text
+            elif hasattr(response, 'candidates') and response.candidates:
+                candidate = response.candidates[0]
+                if hasattr(candidate, 'content') and candidate.content.parts:
+                    text_content = ''.join([part.text for part in candidate.content.parts if hasattr(part, 'text')])
+                    return text_content or "Translation could not be generated."
+
+            return "Translation could not be generated."
+
+        except Exception as e:
+            raise RuntimeError(f"Translation failed: {str(e)}")
 
     @staticmethod
     def run_personalizer(markdown: str, profile: Dict) -> str:
         """Personalize content based on user profile"""
-        input_data = json.dumps({"content": markdown, "profile": profile})
+        try:
+            model = SkillRunner._get_model()
 
-        env = os.environ.copy()
-        env['GOOGLE_API_KEY'] = os.getenv('OPENAI_API_KEY')  # Map to Google API key
+            python_knowledge = profile.get('python_knowledge', False)
+            has_nvidia_gpu = profile.get('has_nvidia_gpu', False)
+            experience_level = profile.get('experience_level', 'beginner')
 
-        result = subprocess.run(
-            ["python", "skills/personalize_agent.py"],
-            input=input_data,
-            capture_output=True,
-            text=True,
-            timeout=SkillRunner.SKILL_TIMEOUT,
-            env=env
-        )
+            prompt = f"""
+            Personalize the following textbook content based on the user profile:
 
-        if result.returncode != 0:
-            raise RuntimeError(f"Personalization failed: {result.stderr}")
+            User Profile:
+            - Python Knowledge: {'Yes' if python_knowledge else 'No'}
+            - Has NVIDIA GPU: {'Yes' if has_nvidia_gpu else 'No'}
+            - Experience Level: {experience_level}
 
-        return result.stdout
+            Content to personalize:
+            {markdown}
+
+            Please return a personalized version of the content that is appropriate for this user's profile.
+            Make it more accessible if they're beginners, add more depth if they're advanced,
+            and include relevant examples based on their background.
+            """
+
+            response = model.generate_content(prompt)
+
+            # Handle response properly
+            if response.text:
+                return response.text
+            elif hasattr(response, 'candidates') and response.candidates:
+                candidate = response.candidates[0]
+                if hasattr(candidate, 'content') and candidate.content.parts:
+                    text_content = ''.join([part.text for part in candidate.content.parts if hasattr(part, 'text')])
+                    return text_content or "Personalization could not be generated."
+
+            return "Personalization could not be generated."
+
+        except Exception as e:
+            raise RuntimeError(f"Personalization failed: {str(e)}")

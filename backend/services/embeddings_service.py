@@ -1,7 +1,7 @@
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams, PointStruct
 import google.generativeai as genai
-from backend.config import QDRANT_URL, QDRANT_API_KEY, API_KEY
+from config import QDRANT_URL, QDRANT_API_KEY, API_KEY
 
 COLLECTION_NAME = "textbook_chapters"
 

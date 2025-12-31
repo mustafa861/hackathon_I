@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException, Header
 from sqlalchemy.orm import Session
-from backend.database import get_db
-from backend.services.auth_service import validate_token
-from backend.services.skill_runner import SkillRunner
-from backend.models.user import User
-from backend.models.skill_request import PersonalizeRequest, PersonalizeResponse
+from database import get_db
+from services.auth_service import validate_token
+from services.skill_runner import SkillRunner
+from models.user import User
+from models.skill_request import PersonalizeRequest, PersonalizeResponse
 
 router = APIRouter(prefix="/api", tags=["personalization"])
 

@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, Header
-from backend.services.auth_service import validate_token
-from backend.services.skill_runner import SkillRunner
-from backend.models.skill_request import TranslateRequest, TranslateResponse
+from services.auth_service import validate_token
+from services.skill_runner import SkillRunner
+from models.skill_request import TranslateRequest, TranslateResponse
 
 router = APIRouter(prefix="/api", tags=["translation"])
 

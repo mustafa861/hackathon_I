@@ -11,6 +11,10 @@ QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
 API_KEY = os.getenv("OPENAI_API_KEY")  # This will hold the Google API key
 JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
 
+# Also set it as API_KEY in the environment so subprocess can access it
+if API_KEY:
+    os.environ['API_KEY'] = API_KEY
+
 # Provide default values to prevent None values
 if DATABASE_URL is None:
     DATABASE_URL = "sqlite:///./test.db"  # Use SQLite for testing if no PostgreSQL URL provided

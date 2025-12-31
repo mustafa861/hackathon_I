@@ -3,7 +3,8 @@
     "allow": [
       "WebSearch",
       "Bash(npx create-docusaurus@latest:*)",
-      "Bash(python -c \"import sys; sys.path.insert\\(0, ''.''\\); from backend.main import app; print\\(''Backend imports successfully''\\)\")"
+      "Bash(python -c \"import sys; sys.path.insert\\(0, ''.''\\); from backend.main import app; print\\(''Backend imports successfully''\\)\")",
+      "Bash(uvicorn main:app --reload)"
     ],
     "deny": [],
     "ask": []
