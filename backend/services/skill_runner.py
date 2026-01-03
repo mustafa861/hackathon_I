@@ -17,7 +17,7 @@ class SkillRunner:
 
     @staticmethod
     def run_quiz_generator(markdown: str) -> str:
-        """Generate quiz for chapter markdown"""
+        """Generate quiz for chapter markdown using the quiz agent"""
         try:
             model = SkillRunner._get_model()
 
@@ -51,7 +51,7 @@ class SkillRunner:
 
     @staticmethod
     def run_translator(markdown: str) -> str:
-        """Translate markdown to Urdu"""
+        """Translate markdown to Urdu using the translation agent"""
         try:
             model = SkillRunner._get_model()
 
@@ -84,7 +84,7 @@ class SkillRunner:
 
     @staticmethod
     def run_personalizer(markdown: str, profile: Dict) -> str:
-        """Personalize content based on user profile"""
+        """Personalize content based on user profile using the personalization agent"""
         try:
             model = SkillRunner._get_model()
 

@@ -46,8 +46,11 @@ const config = {
             position: 'left',
             label: 'Textbook',
           },
-          { to: '/signup', label: 'Sign Up', position: 'right' },
-          { to: '/login', label: 'Login', position: 'right' },
+          {
+            to: '/signup',
+            label: 'GET STARTED',
+            position: 'right',
+          },
           {
             href: 'https://github.com/mustafa861/hackathon_I',
             label: 'GitHub',

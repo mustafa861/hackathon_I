@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { API_BASE_URL } from '../constants/api';
 import { useAuth } from './useAuth';
 
 export function useSkills() {
@@ -10,7 +11,7 @@ export function useSkills() {
 
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:8000/api/personalize', {
+      const response = await fetch(`${API_BASE_URL}/api/personalize`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -33,7 +34,7 @@ export function useSkills() {
 
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:8000/api/translate', {
+      const response = await fetch(`${API_BASE_URL}/api/translate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

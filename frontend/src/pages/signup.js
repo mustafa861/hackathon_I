@@ -6,14 +6,16 @@ const API_BASE_URL = 'http://127.0.0.1:8000';
 export default function SignupPage() {
   const [formData, setFormData] = useState({
     email: '',
-    password: ''
+    password: '',
+    python_knowledge: false,
+    has_nvidia_gpu: false
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: type === 'checkbox' ? checked : value
     }));
   };
 
@@ -28,16 +30,21 @@ export default function SignupPage() {
         body: JSON.stringify({
         email: formData.email,
         password: formData.password,
-        python_knowledge: false,
-        has_nvidia_gpu: false
+        python_knowledge: formData.python_knowledge,
+        has_nvidia_gpu: formData.has_nvidia_gpu
       })
       });
 
       if (response.ok) {
         const data = await response.json();
-        // Store token and redirect
-        localStorage.setItem('auth_token', data.access_token);
-        localStorage.setItem('user_email', formData.email);
+        // Store token and user info in localStorage
+        localStorage.setItem('token', data.access_token);
+        localStorage.setItem('user', JSON.stringify({
+          email: formData.email,
+          python_knowledge: formData.python_knowledge,
+          has_nvidia_gpu: formData.has_nvidia_gpu
+        }));
+        // Redirect to docs
         window.location.href = '/docs/intro';
       } else {
         alert('Signup failed');
@@ -79,6 +86,32 @@ export default function SignupPage() {
                   required
                   className="form-control"
                 />
+              </div>
+
+              <div className="margin-bottom--sm">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="python_knowledge"
+                    checked={formData.python_knowledge}
+                    onChange={handleChange}
+                    className="margin-right--sm"
+                  />
+                  I have Python knowledge
+                </label>
+              </div>
+
+              <div className="margin-bottom--sm">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="has_nvidia_gpu"
+                    checked={formData.has_nvidia_gpu}
+                    onChange={handleChange}
+                    className="margin-right--sm"
+                  />
+                  I have an NVIDIA GPU
+                </label>
               </div>
 
               <button type="submit" className="button button--primary">

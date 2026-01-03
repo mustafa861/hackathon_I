@@ -33,9 +33,10 @@ export default function LoginPage() {
 
       if (response.ok) {
         const data = await response.json();
-        // Store token and redirect
-        localStorage.setItem('auth_token', data.access_token);
-        localStorage.setItem('user_email', formData.email);
+        // Store token and user info in localStorage
+        localStorage.setItem('token', data.access_token);
+        localStorage.setItem('user', JSON.stringify({ email: formData.email }));
+        // Redirect to docs
         window.location.href = '/docs/intro';
       } else {
         alert('Login failed');

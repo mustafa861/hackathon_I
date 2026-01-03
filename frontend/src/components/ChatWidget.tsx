@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { API_BASE_URL } from '../constants/api';
 import { useAuth } from '../hooks/useAuth';
 
 export function ChatWidget() {
@@ -17,7 +18,7 @@ export function ChatWidget() {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8000/chat', {
+      const response = await fetch(`${API_BASE_URL}/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

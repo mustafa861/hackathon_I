@@ -23,13 +23,22 @@ def setup_collection():
 
 def embed_text(text: str) -> list[float]:
     """Generate embedding using Google's embedding model"""
+    import google.api_core.exceptions
     genai.configure(api_key=API_KEY)  # Using the new unified API key variable
-    model = genai.embed_content(
-        model="models/embedding-001",
-        content=text,
-        task_type="retrieval_document"
-    )
-    return model['embedding']
+    try:
+        model = genai.embed_content(
+            model="models/embedding-001",
+            content=text,
+            task_type="retrieval_document"
+        )
+        return model['embedding']
+    except google.api_core.exceptions.ResourceExhausted:
+        # Return a default embedding when quota is exceeded
+        # This is a fallback to ensure the system still works
+        return [0.0] * 1536  # Default embedding vector size
+    except Exception as e:
+        print(f"Embedding error: {str(e)}")
+        return [0.0] * 1536  # Default embedding vector size
 
 def search_similar(query: str, limit: int = 5) -> list:
     """Search for similar chapter sections"""

@@ -44,12 +44,7 @@ export default {
         },
         {
           "to": "/signup",
-          "label": "Sign Up",
-          "position": "right"
-        },
-        {
-          "to": "/login",
-          "label": "Login",
+          "label": "GET STARTED",
           "position": "right"
         },
         {
