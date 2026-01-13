@@ -7,20 +7,27 @@ export function useSkills() {
   const [loading, setLoading] = useState(false);
 
   const personalizeChapter = async (chapterSlug: string, content: string): Promise<string> => {
-    if (!user) throw new Error('Not authenticated');
-
     setLoading(true);
     try {
+      const headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+      };
+
+      // Add authorization header only if user is authenticated
+      if (user && user.token) {
+        headers['Authorization'] = `Bearer ${user.token}`;
+      }
+
       const response = await fetch(`${API_BASE_URL}/api/personalize`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${user.token}`,
-        },
+        headers,
         body: JSON.stringify({ chapter_slug: chapterSlug, content }),
       });
 
-      if (!response.ok) throw new Error('Personalization failed');
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ detail: 'Personalization failed' }));
+        throw new Error(errorData.detail || 'Personalization failed');
+      }
 
       const data = await response.json();
       return data.personalized_content;
@@ -30,20 +37,27 @@ export function useSkills() {
   };
 
   const translateChapter = async (chapterSlug: string, content: string): Promise<string> => {
-    if (!user) throw new Error('Not authenticated');
-
     setLoading(true);
     try {
+      const headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+      };
+
+      // Add authorization header only if user is authenticated
+      if (user && user.token) {
+        headers['Authorization'] = `Bearer ${user.token}`;
+      }
+
       const response = await fetch(`${API_BASE_URL}/api/translate`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${user.token}`,
-        },
+        headers,
         body: JSON.stringify({ chapter_slug: chapterSlug, content }),
       });
 
-      if (!response.ok) throw new Error('Translation failed');
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ detail: 'Translation failed' }));
+        throw new Error(errorData.detail || 'Translation failed');
+      }
 
       const data = await response.json();
       return data.translated_content;

@@ -33,13 +33,14 @@ export default function LoginPage() {
 
       if (response.ok) {
         const data = await response.json();
-        // Store token and user info in localStorage
-        localStorage.setItem('token', data.access_token);
-        localStorage.setItem('user', JSON.stringify({ email: formData.email }));
-        // Redirect to docs
-        window.location.href = '/docs/intro';
+        // Store token and user info in localStorage - will be picked up by AuthContext
+        localStorage.setItem('auth_token', data.access_token);
+        localStorage.setItem('user_email', formData.email);
+        // Redirect to home page
+        window.location.href = '/';
       } else {
-        alert('Login failed');
+        const errorData = await response.json().catch(() => ({ detail: 'Login failed' }));
+        alert(errorData.detail || 'Login failed');
       }
     } catch (error) {
       console.error('Login error:', error);

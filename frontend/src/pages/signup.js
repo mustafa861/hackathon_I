@@ -37,17 +37,16 @@ export default function SignupPage() {
 
       if (response.ok) {
         const data = await response.json();
-        // Store token and user info in localStorage
-        localStorage.setItem('token', data.access_token);
-        localStorage.setItem('user', JSON.stringify({
-          email: formData.email,
-          python_knowledge: formData.python_knowledge,
-          has_nvidia_gpu: formData.has_nvidia_gpu
-        }));
-        // Redirect to docs
-        window.location.href = '/docs/intro';
+        // Store token and user info in localStorage - will be picked up by AuthContext
+        localStorage.setItem('auth_token', data.access_token);
+        localStorage.setItem('user_email', formData.email);
+        // Show success message before redirecting
+        alert('Account created successfully! You are now logged in.');
+        // Redirect to home page
+        window.location.href = '/';
       } else {
-        alert('Signup failed');
+        const errorData = await response.json().catch(() => ({ detail: 'Signup failed' }));
+        alert(errorData.detail || 'Signup failed');
       }
     } catch (error) {
       console.error('Signup error:', error);

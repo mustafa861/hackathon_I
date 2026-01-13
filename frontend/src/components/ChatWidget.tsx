@@ -3,13 +3,13 @@ import { API_BASE_URL } from '../constants/api';
 import { useAuth } from '../hooks/useAuth';
 
 export function ChatWidget() {
-  const { user, isAuthenticated } = useAuth();
+  const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [messages, setMessages] = useState<Array<{role: string, content: string}>>([]);
   const [loading, setLoading] = useState(false);
 
-  if (!isAuthenticated) return null;
+  // Allow chat for both authenticated and non-authenticated users
 
   const sendMessage = async () => {
     if (!query.trim()) return;
@@ -18,14 +18,26 @@ export function ChatWidget() {
     setLoading(true);
 
     try {
+      const headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+      };
+
+      // Add authorization header only if user is authenticated
+      if (user && user.token) {
+        headers['Authorization'] = `Bearer ${user.token}`;
+      }
+
       const response = await fetch(`${API_BASE_URL}/chat`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${user.token}`,
-        },
+        headers,
         body: JSON.stringify({ query, selected_context: '' }),
       });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ answer: 'Error occurred while processing your request.' }));
+        setMessages(prev => [...prev, { role: 'assistant', content: errorData.answer || 'Error occurred while processing your request.' }]);
+        return;
+      }
 
       const data = await response.json();
       setMessages(prev => [...prev, { role: 'assistant', content: data.answer }]);

@@ -44,7 +44,7 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
     # Only check for plaintext hash since we're not using bcrypt
     if hashed_password.startswith("plaintext$"):
         import hashlib
-        expected_hash = hashed_password[11:]  # Remove "plaintext$" prefix
+        expected_hash = hashed_password[10:]  # Remove "plaintext$" prefix (10 characters)
         actual_hash = hashlib.sha256(plain_password.encode()).hexdigest()
         result = expected_hash == actual_hash
         print(f"Debug: Password verification result: {result}")

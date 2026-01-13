@@ -30,6 +30,12 @@ const config = {
     ],
   ],
 
+  scripts: [
+    {
+      src: '/js/auth-navbar-handler.js',
+      defer: true,
+    },
+  ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -47,8 +53,8 @@ const config = {
             label: 'Textbook',
           },
           {
-            to: '/signup',
-            label: 'GET STARTED',
+            type: 'html',
+            value: '<div id="auth-status-container">Loading...</div>',
             position: 'right',
           },
           {

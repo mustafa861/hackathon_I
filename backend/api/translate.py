@@ -26,4 +26,10 @@ def translate_chapter(
             "chapter_slug": request.chapter_slug
         }
     except RuntimeError as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        # More specific error handling for translation
+        error_msg = str(e)
+        print(f"Translation error: {error_msg}")
+        if "API_KEY" in error_msg.upper() or "GOOGLE" in error_msg.upper() or "AUTHENTICATION" in error_msg.upper():
+            raise HTTPException(status_code=500, detail="Translation service is not properly configured. Please check API key settings.")
+        else:
+            raise HTTPException(status_code=500, detail=f"Translation failed: {error_msg}")

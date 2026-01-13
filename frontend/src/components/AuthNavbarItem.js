@@ -1,20 +1,17 @@
 import React from 'react';
-import { useAuth } from '@site/src/context/AuthContext';
-import { NavbarNavLink } from '@theme/Navbar/Items';
-import { translate } from '@docusaurus/Translate';
+import { useAuth } from '../hooks/useAuth';
 
-const UserInfoNavbarItem = (props) => {
+const AuthNavbarItem = () => {
   const { user, logout, isAuthenticated } = useAuth();
 
   if (isAuthenticated && user) {
     // Show user email and logout button when authenticated
     return (
-      <div className="navbar__item navbar__user-info">
-        <span className="navbar__user-email" style={{ marginRight: '1rem', color: 'white' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <span style={{ color: 'white', fontSize: '0.875rem' }}>
           {user.email}
         </span>
         <button
-          className="navbar__logout-button"
           onClick={logout}
           style={{
             background: 'none',
@@ -22,20 +19,21 @@ const UserInfoNavbarItem = (props) => {
             color: 'white',
             cursor: 'pointer',
             textDecoration: 'underline',
-            fontSize: '0.875rem'
+            fontSize: '0.875rem',
+            padding: 0,
+            margin: 0
           }}
         >
-          {translate({ id: 'theme.navbar.logout', message: 'Logout' })}
+          Logout
         </button>
       </div>
     );
   } else {
-    // Show signup and login buttons when not authenticated
+    // Show "SIGNUP" and "SIGNIN" buttons when not authenticated
     return (
-      <div className="navbar__item navbar__auth-links">
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
         <a
           href="/signup"
-          className="navbar__link"
           style={{
             color: 'white',
             textDecoration: 'none',
@@ -43,15 +41,13 @@ const UserInfoNavbarItem = (props) => {
             padding: '6px 12px',
             border: '1px solid white',
             borderRadius: '4px',
-            display: 'inline-block',
-            marginRight: '0.5rem'
+            display: 'inline-block'
           }}
         >
           SIGNUP
         </a>
         <a
           href="/login"
-          className="navbar__link"
           style={{
             color: 'white',
             textDecoration: 'none',
@@ -69,4 +65,4 @@ const UserInfoNavbarItem = (props) => {
   }
 };
 
-export default UserInfoNavbarItem;
+export default AuthNavbarItem;

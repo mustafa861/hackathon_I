@@ -20,8 +20,8 @@ export function TranslateButton({ chapterSlug, originalContent, onContentChange 
         setIsTranslated(true);
       } catch (error) {
         console.error('Translation error:', error);
-        // If it fails, we can still show an error but not require login
-        alert('Could not translate content at this time');
+        // Show more specific error message
+        alert(`Could not translate content at this time: ${error.message}`);
       }
     }
   };

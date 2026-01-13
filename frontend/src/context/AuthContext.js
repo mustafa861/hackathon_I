@@ -38,29 +38,24 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     // Check for existing token on app start
-    const token = localStorage.getItem('token');
-    const user = localStorage.getItem('user');
+    // Use consistent keys with the useAuth hook: 'auth_token' and 'user_email'
+    const token = localStorage.getItem('auth_token');
+    const email = localStorage.getItem('user_email');
 
-    if (token && user) {
-      try {
-        const parsedUser = JSON.parse(user);
-        dispatch({
-          type: 'LOGIN',
-          payload: { user: parsedUser, token }
-        });
-      } catch (error) {
-        console.error('Error parsing stored user data:', error);
-        // Clear invalid data
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-      }
+    if (token && email) {
+      const userData = { email }; // Create user object from email
+      dispatch({
+        type: 'LOGIN',
+        payload: { user: userData, token }
+      });
     }
     dispatch({ type: 'SET_LOADING', payload: false });
   }, []);
 
   const login = (userData, token) => {
-    localStorage.setItem('token', token);
-    localStorage.setItem('user', JSON.stringify(userData));
+    // Use consistent keys with the useAuth hook: 'auth_token' and 'user_email'
+    localStorage.setItem('auth_token', token);
+    localStorage.setItem('user_email', userData.email);
     dispatch({
       type: 'LOGIN',
       payload: { user: userData, token }
@@ -68,8 +63,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    // Use consistent keys with the useAuth hook: 'auth_token' and 'user_email'
+    localStorage.removeItem('auth_token');
+    localStorage.removeItem('user_email');
     dispatch({ type: 'LOGOUT' });
   };
 

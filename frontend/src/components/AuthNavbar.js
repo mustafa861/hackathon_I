@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '@site/src/context/AuthContext';
 import clsx from 'clsx';
 
 const AuthNavbar = () => {

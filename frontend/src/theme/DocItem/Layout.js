@@ -9,8 +9,9 @@ export default function LayoutWrapper(props) {
   const [content, setContent] = useState(null);
   const { isAuthenticated } = useAuth();
 
-  // Extract original content from props
+  // Extract chapter slug and original content from props
   const originalContent = props.content?.metadata?.unversionedId || props.content?.metadata?.title || '';
+  const chapterSlug = props.content?.metadata?.unversionedId || props.content?.metadata?.id || 'unknown';
 
   const handleContentChange = (newContent) => {
     setContent(newContent);
@@ -20,12 +21,12 @@ export default function LayoutWrapper(props) {
     <>
       <div style={{ marginBottom: '20px', padding: '10px', backgroundColor: '#f9f9f9', borderRadius: '5px' }}>
         <PersonalizeButton
-          chapterSlug={props.content?.metadata?.slug || 'unknown'}
+          chapterSlug={chapterSlug}
           originalContent={originalContent}
           onContentChange={handleContentChange}
         />
         <TranslateButton
-          chapterSlug={props.content?.metadata?.slug || 'unknown'}
+          chapterSlug={chapterSlug}
           originalContent={originalContent}
           onContentChange={handleContentChange}
         />

@@ -28,6 +28,12 @@ export default {
       }
     ]
   ],
+  "scripts": [
+    {
+      "src": "/js/auth-navbar-handler.js",
+      "defer": true
+    }
+  ],
   "themeConfig": {
     "navbar": {
       "title": "Physical AI Textbook",
@@ -43,8 +49,8 @@ export default {
           "label": "Textbook"
         },
         {
-          "to": "/signup",
-          "label": "GET STARTED",
+          "type": "html",
+          "value": "<div id=\"auth-status-container\">Loading...</div>",
           "position": "right"
         },
         {
@@ -299,7 +305,6 @@ export default {
   "customFields": {},
   "plugins": [],
   "themes": [],
-  "scripts": [],
   "headTags": [],
   "stylesheets": [],
   "clientModules": [],

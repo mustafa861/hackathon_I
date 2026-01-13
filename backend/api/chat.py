@@ -63,7 +63,19 @@ def chat_with_textbook(
     except Exception as e:
         # Handle any other errors
         print(f"Chat error: {str(e)}")  # Log the error
-        return {
-            "answer": "Sorry, I encountered an error while processing your request. Please try again.",
-            "sources": []
-        }
+        # Check if it's specifically a Qdrant connection error
+        if "QDRANT" in str(e).upper() or "CONNECTION" in str(e).upper() or "HOST" in str(e).upper():
+            return {
+                "answer": "I'm unable to access the textbook content right now. Please make sure the database is running and properly configured.",
+                "sources": []
+            }
+        elif "API_KEY" in str(e).upper() or "GOOGLE" in str(e).upper() or "AUTHENTICATION" in str(e).upper():
+            return {
+                "answer": "I'm unable to process your request due to API configuration issues. Please check that the API key is properly set.",
+                "sources": []
+            }
+        else:
+            return {
+                "answer": f"Sorry, I encountered an error while processing your request: {str(e)}",
+                "sources": []
+            }

@@ -4,7 +4,10 @@
       "WebSearch",
       "Bash(npx create-docusaurus@latest:*)",
       "Bash(python -c \"import sys; sys.path.insert\\(0, ''.''\\); from backend.main import app; print\\(''Backend imports successfully''\\)\")",
-      "Bash(uvicorn main:app --reload)"
+      "Bash(uvicorn main:app --reload)",
+      "Bash(npx docusaurus start)",
+      "Bash(npx docusaurus start --port 3001)",
+      "Bash(npm run build)"
     ],
     "deny": [],
     "ask": []
