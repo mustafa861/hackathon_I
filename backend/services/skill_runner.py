@@ -1,25 +1,29 @@
 import json
 import os
 from typing import Dict
-import google.generativeai as genai
+from openai import OpenAI
+import openai
 from config import API_KEY
 
 class SkillRunner:
     """Service for invoking agent skills directly (avoiding subprocess encoding issues)"""
 
     @staticmethod
-    def _get_model():
-        """Get configured Gemini model"""
+    def _get_client():
+        """Get configured OpenAI client for Groq API"""
         if not API_KEY:
             raise RuntimeError("API_KEY not configured")
-        genai.configure(api_key=API_KEY)
-        return genai.GenerativeModel('gemini-2.5-flash')
+        client = OpenAI(
+            api_key=API_KEY,
+            base_url="https://api.groq.com/openai/v1"
+        )
+        return client
 
     @staticmethod
     def run_quiz_generator(markdown: str) -> str:
         """Generate quiz for chapter markdown using the quiz agent"""
         try:
-            model = SkillRunner._get_model()
+            client = SkillRunner._get_client()
 
             prompt = f"""
             Generate a quiz based on the following textbook content.
@@ -33,18 +37,23 @@ class SkillRunner:
             Please provide the quiz in a clear, formatted way.
             """
 
-            response = model.generate_content(prompt)
+            response = client.chat.completions.create(
+                messages=[
+                    {
+                        "role": "system",
+                        "content": "You are an educational assistant that creates quizzes based on textbook content. Generate 5 multiple-choice questions with 4 options each and indicate the correct answer."
+                    },
+                    {
+                        "role": "user",
+                        "content": prompt
+                    }
+                ],
+                model="llama3-70b-8192",  # Using a Groq-compatible model
+                temperature=0.7,
+                max_tokens=1500
+            )
 
-            # Handle response properly
-            if response.text:
-                return response.text
-            elif hasattr(response, 'candidates') and response.candidates:
-                candidate = response.candidates[0]
-                if hasattr(candidate, 'content') and candidate.content.parts:
-                    text_content = ''.join([part.text for part in candidate.content.parts if hasattr(part, 'text')])
-                    return text_content or "Quiz could not be generated."
-
-            return "Quiz could not be generated."
+            return response.choices[0].message.content or "Quiz could not be generated."
 
         except Exception as e:
             raise RuntimeError(f"Quiz generation failed: {str(e)}")
@@ -53,7 +62,7 @@ class SkillRunner:
     def run_translator(markdown: str) -> str:
         """Translate markdown to Urdu using the translation agent"""
         try:
-            model = SkillRunner._get_model()
+            client = SkillRunner._get_client()
 
             prompt = f"""
             Translate the following English text to Urdu.
@@ -66,18 +75,23 @@ class SkillRunner:
             Please provide only the translated text in Urdu, nothing else.
             """
 
-            response = model.generate_content(prompt)
+            response = client.chat.completions.create(
+                messages=[
+                    {
+                        "role": "system",
+                        "content": "You are a professional translator that translates English text to Urdu. Maintain accuracy and cultural appropriateness."
+                    },
+                    {
+                        "role": "user",
+                        "content": prompt
+                    }
+                ],
+                model="llama3-70b-8192",  # Using a Groq-compatible model
+                temperature=0.3,
+                max_tokens=1500
+            )
 
-            # Handle response properly
-            if response.text:
-                return response.text
-            elif hasattr(response, 'candidates') and response.candidates:
-                candidate = response.candidates[0]
-                if hasattr(candidate, 'content') and candidate.content.parts:
-                    text_content = ''.join([part.text for part in candidate.content.parts if hasattr(part, 'text')])
-                    return text_content or "Translation could not be generated."
-
-            return "Translation could not be generated."
+            return response.choices[0].message.content or "Translation could not be generated."
 
         except Exception as e:
             raise RuntimeError(f"Translation failed: {str(e)}")
@@ -86,7 +100,7 @@ class SkillRunner:
     def run_personalizer(markdown: str, profile: Dict) -> str:
         """Personalize content based on user profile using the personalization agent"""
         try:
-            model = SkillRunner._get_model()
+            client = SkillRunner._get_client()
 
             python_knowledge = profile.get('python_knowledge', False)
             has_nvidia_gpu = profile.get('has_nvidia_gpu', False)
@@ -108,18 +122,23 @@ class SkillRunner:
             and include relevant examples based on their background.
             """
 
-            response = model.generate_content(prompt)
+            response = client.chat.completions.create(
+                messages=[
+                    {
+                        "role": "system",
+                        "content": "You are an educational content personalizer. Adapt the content to match the user's profile, considering their Python knowledge, hardware, and experience level. Make it more accessible for beginners and add depth for advanced users."
+                    },
+                    {
+                        "role": "user",
+                        "content": prompt
+                    }
+                ],
+                model="llama3-70b-8192",  # Using a Groq-compatible model
+                temperature=0.7,
+                max_tokens=1500
+            )
 
-            # Handle response properly
-            if response.text:
-                return response.text
-            elif hasattr(response, 'candidates') and response.candidates:
-                candidate = response.candidates[0]
-                if hasattr(candidate, 'content') and candidate.content.parts:
-                    text_content = ''.join([part.text for part in candidate.content.parts if hasattr(part, 'text')])
-                    return text_content or "Personalization could not be generated."
-
-            return "Personalization could not be generated."
+            return response.choices[0].message.content or "Personalization could not be generated."
 
         except Exception as e:
             raise RuntimeError(f"Personalization failed: {str(e)}")

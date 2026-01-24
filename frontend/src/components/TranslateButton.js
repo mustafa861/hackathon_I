@@ -1,21 +1,25 @@
 import React, { useState } from 'react';
 import { useSkills } from '../hooks/useSkills';
-import { useAuth } from '../hooks/useAuth';
 
 export function TranslateButton({ chapterSlug, originalContent, onContentChange }) {
-  const { isAuthenticated } = useAuth();
   const { translateChapter, loading } = useSkills();
   const [isTranslated, setIsTranslated] = useState(false);
 
   const handleClick = async () => {
+    // Get content dynamically if not provided initially
+    const contentToUse = originalContent || (() => {
+      const articleElement = document.querySelector('article.markdown');
+      return articleElement?.innerText || articleElement?.textContent || '';
+    })();
+
     if (isTranslated) {
-      onContentChange(originalContent);
+      onContentChange(contentToUse);
       setIsTranslated(false);
     } else {
       try {
         // Try to call the translation function without authentication
         // The useSkills hook will handle the API call
-        const translated = await translateChapter(chapterSlug, originalContent);
+        const translated = await translateChapter(chapterSlug, contentToUse);
         onContentChange(translated);
         setIsTranslated(true);
       } catch (error) {

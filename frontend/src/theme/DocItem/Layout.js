@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '@theme-original/DocItem/Layout';
 import { PersonalizeButton } from '../../components/PersonalizeButton';
 import { TranslateButton } from '../../components/TranslateButton';
@@ -7,15 +7,32 @@ import { useAuth } from '../../hooks/useAuth';
 
 export default function LayoutWrapper(props) {
   const [content, setContent] = useState(null);
+  const [originalContent, setOriginalContent] = useState('');
   const { isAuthenticated } = useAuth();
 
-  // Extract chapter slug and original content from props
-  const originalContent = props.content?.metadata?.unversionedId || props.content?.metadata?.title || '';
+  // Extract chapter slug
   const chapterSlug = props.content?.metadata?.unversionedId || props.content?.metadata?.id || 'unknown';
 
   const handleContentChange = (newContent) => {
     setContent(newContent);
   };
+
+  // Effect to get the original content after component mounts
+  useEffect(() => {
+    // Wait a bit for the content to be rendered, then grab it
+    const timer = setTimeout(() => {
+      const articleElement = document.querySelector('article.markdown');
+      if (articleElement) {
+        const textContent = articleElement.innerText || articleElement.textContent || '';
+        setOriginalContent(textContent);
+      } else {
+        // Fallback to metadata if no content found
+        setOriginalContent(props.content?.metadata?.title || chapterSlug || '');
+      }
+    }, 100); // Small delay to ensure content is rendered
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
@@ -32,7 +49,14 @@ export default function LayoutWrapper(props) {
         />
       </div>
 
-      <Layout {...props} />
+      {content ? (
+        <div
+          style={{ padding: '20px' }}
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+      ) : (
+        <Layout {...props} />
+      )}
 
       <ChatWidget />
     </>

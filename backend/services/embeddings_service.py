@@ -1,16 +1,16 @@
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams, PointStruct
-import google.generativeai as genai
-from config import QDRANT_URL, QDRANT_API_KEY, API_KEY
+import cohere
+from config import QDRANT_URL, QDRANT_API_KEY, COHERE_API_KEY
 
 COLLECTION_NAME = "textbook_chapters"
 
 client = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
 
-def get_google_client():
-    """Get Google Generative AI client, initializing it only when needed"""
-    genai.configure(api_key=API_KEY)  # Using the new unified API key variable
-    return genai
+def get_cohere_client():
+    """Get Cohere client for embeddings, initializing it only when needed"""
+    co = cohere.Client(api_key=COHERE_API_KEY)
+    return co
 
 def setup_collection():
     """Create Qdrant collection if not exists"""
@@ -18,27 +18,26 @@ def setup_collection():
     if not any(c.name == COLLECTION_NAME for c in collections):
         client.create_collection(
             collection_name=COLLECTION_NAME,
-            vectors_config=VectorParams(size=1536, distance=Distance.COSINE)
+            vectors_config=VectorParams(size=1024, distance=Distance.COSINE)  # Updated for Cohere embeddings
         )
 
 def embed_text(text: str) -> list[float]:
-    """Generate embedding using Google's embedding model"""
-    import google.api_core.exceptions
-    genai.configure(api_key=API_KEY)  # Using the new unified API key variable
+    """Generate embedding using Cohere's embedding model"""
     try:
-        model = genai.embed_content(
-            model="models/embedding-001",
-            content=text,
-            task_type="retrieval_document"
+        co = cohere.Client(api_key=COHERE_API_KEY)
+        response = co.embed(
+            texts=[text],
+            model="embed-english-v3.0",  # Using Cohere's embedding model
+            input_type="search_document"  # Specify the input type for document embeddings
         )
-        return model['embedding']
-    except google.api_core.exceptions.ResourceExhausted:
-        # Return a default embedding when quota is exceeded
+        return response.embeddings[0]  # Return the first (and only) embedding
+    except cohere.CohereError as e:
+        # Return a default embedding when Cohere API fails
         # This is a fallback to ensure the system still works
-        return [0.0] * 1536  # Default embedding vector size
+        return [0.0] * 1024  # Default embedding vector size for Cohere's model
     except Exception as e:
         print(f"Embedding error: {str(e)}")
-        return [0.0] * 1536  # Default embedding vector size
+        return [0.0] * 1024  # Default embedding vector size for Cohere's model
 
 def search_similar(query: str, limit: int = 5) -> list:
     """Search for similar chapter sections"""

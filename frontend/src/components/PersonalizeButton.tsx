@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useSkills } from '../hooks/useSkills';
-import { useAuth } from '../hooks/useAuth';
 
 interface Props {
   chapterSlug: string;
@@ -9,21 +8,24 @@ interface Props {
 }
 
 export function PersonalizeButton({ chapterSlug, originalContent, onContentChange }: Props) {
-  const { isAuthenticated } = useAuth();
   const { personalizeChapter, loading } = useSkills();
   const [isPersonalized, setIsPersonalized] = useState(false);
 
-  if (!isAuthenticated) return null;  // Hide button for guests
-
   const handleClick = async () => {
+    // Get content dynamically if not provided initially
+    const contentToUse = originalContent || (() => {
+      const articleElement = document.querySelector('article.markdown');
+      return articleElement?.innerText || articleElement?.textContent || '';
+    })();
+
     if (isPersonalized) {
       // Restore original
-      onContentChange(originalContent);
+      onContentChange(contentToUse);
       setIsPersonalized(false);
     } else {
       // Personalize
       try {
-        const personalized = await personalizeChapter(chapterSlug, originalContent);
+        const personalized = await personalizeChapter(chapterSlug, contentToUse);
         onContentChange(personalized);
         setIsPersonalized(true);
       } catch (error) {
@@ -37,10 +39,10 @@ export function PersonalizeButton({ chapterSlug, originalContent, onContentChang
     <button
       onClick={handleClick}
       disabled={loading}
-      className={loading ? "personalize-btn" : "personalize-btn"}
+      className="personalize-btn"
       style={{
         padding: '10px 20px',
-        backgroundColor: isPersonalized ? '#888' : '#007bff',
+        backgroundColor: isPersonalized ? '#888' : '#000000', // Changed to black
         color: 'white',
         border: 'none',
         borderRadius: '5px',

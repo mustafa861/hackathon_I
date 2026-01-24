@@ -67,20 +67,20 @@ function initializeAuthStatus() {
   return true; // Return true to indicate successful initialization
 }
 
-// Try to initialize immediately (in case DOM is already loaded)
-if (!initializeAuthStatus()) {
-  // If initialization failed (container not found), wait for DOM to be ready
-  if (document.readyState === 'loading') {
-    // DOM is still loading, wait for the event
-    document.addEventListener('DOMContentLoaded', function() {
-      // Retry initialization with a slight delay to ensure Docusaurus has rendered the navbar
-      setTimeout(initializeAuthStatus, 100);
-    });
+// Initialize immediately and repeatedly until container is found
+function waitForContainerAndInitialize() {
+  if (initializeAuthStatus()) {
+    // Successfully initialized, stop trying
+    return true;
   } else {
-    // DOM is already loaded, retry with a delay
-    setTimeout(initializeAuthStatus, 100);
+    // Container not found yet, try again in a bit
+    setTimeout(waitForContainerAndInitialize, 50);
+    return false;
   }
 }
+
+// Start the initialization process
+waitForContainerAndInitialize();
 
 // Listen for auth state changes from React app
 window.addEventListener('storage', function(e) {
@@ -94,3 +94,22 @@ window.addEventListener('storage', function(e) {
     }, 100);
   }
 });
+
+// Also listen for potential dynamic navbar updates (in case navbar gets re-rendered by Docusaurus)
+if ('MutationObserver' in window) {
+  const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      mutation.addedNodes.forEach(function(node) {
+        if (node.nodeType === 1 && node.id === 'auth-status-container') {
+          // New auth container added, initialize it
+          setTimeout(initializeAuthStatus, 50);
+        }
+      });
+    });
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+}

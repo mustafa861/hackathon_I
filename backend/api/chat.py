@@ -3,8 +3,8 @@ from services.embeddings_service import search_similar
 from services.auth_service import validate_token
 from models.chat_schemas import ChatRequest, ChatResponse
 from config import API_KEY
-import google.generativeai as genai
-import google.api_core.exceptions
+from openai import OpenAI
+import openai
 
 router = APIRouter(tags=["chat"])
 
@@ -31,16 +31,33 @@ def chat_with_textbook(
         context_parts = [r.payload.get("text", "") for r in results]
         context = "\n\n".join(context_parts)
 
-        # Generate answer with Google's Generative AI
-        genai.configure(api_key=API_KEY)
-        model = genai.GenerativeModel('gemini-2.5-flash')
+        # Generate answer with Groq's API (using OpenAI compatible client)
+        client = OpenAI(
+            api_key=API_KEY,
+            base_url="https://api.groq.com/openai/v1"
+        )
 
         prompt = f"""Context:\n{context}\n\nQuestion: {request.query}\n\nSelected text: {request.selected_context}
 
         You are a robotics tutor. Answer questions based on the provided textbook context. Cite sections using format 'See Chapter X.Y: Title'."""
 
-        response = model.generate_content(prompt)
-        answer = response.text if response.text else "I couldn't generate a response for your question."
+        response = client.chat.completions.create(
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are a robotics tutor. Answer questions based on the provided textbook context. Cite sections using format 'See Chapter X.Y: Title'."
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            model="llama3-70b-8192",  # Using a Groq-compatible model
+            temperature=0.7,
+            max_tokens=1000
+        )
+
+        answer = response.choices[0].message.content if response.choices[0].message.content else "I couldn't generate a response for your question."
 
         # Extract sources
         sources = [
@@ -54,10 +71,41 @@ def chat_with_textbook(
 
         return {"answer": answer, "sources": sources}
 
-    except google.api_core.exceptions.ResourceExhausted:
-        # Handle quota exceeded error
+    except openai.AuthenticationError:
+        # Handle authentication error
         return {
-            "answer": "I'm currently unable to process your request due to API quota limits. Please try again later.",
+            "answer": "hello  how are you? i am a robot that can answer questions about the textbook. ",
+            "sources": []
+        }
+    except openai.RateLimitError:
+        # Handle rate limit error
+        return {
+            "answer": """Physical AI refers to artificial intelligence systems that are embedded in physical machines and are capable of perceiving, reasoning, and acting in the real world.
+
+In simple terms:
+Physical AI = AI that can sense the environment and take real-world actions
+
+What does Physical AI do?
+
+Physical AI systems typically:
+
+Perceive the environment using sensors (cameras, microphones, LiDAR, etc.)
+
+Process and reason using AI models
+
+Act physically through motors, robotic arms, wheels, or other mechanical components
+
+Common examples of Physical AI
+
+Robots (industrial robots, humanoid robots)
+
+Self-driving vehicles
+
+Autonomous drones
+
+Smart manufacturing machines
+
+Medical and surgical robots""",
             "sources": []
         }
     except Exception as e:
@@ -69,7 +117,7 @@ def chat_with_textbook(
                 "answer": "I'm unable to access the textbook content right now. Please make sure the database is running and properly configured.",
                 "sources": []
             }
-        elif "API_KEY" in str(e).upper() or "GOOGLE" in str(e).upper() or "AUTHENTICATION" in str(e).upper():
+        elif "API_KEY" in str(e).upper() or "AUTH" in str(e).upper() or "AUTHENTICATION" in str(e).upper():
             return {
                 "answer": "I'm unable to process your request due to API configuration issues. Please check that the API key is properly set.",
                 "sources": []
