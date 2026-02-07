@@ -34,8 +34,11 @@ export function ChatWidget() {
       });
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ answer: 'Error occurred while processing your request.' }));
-        setMessages(prev => [...prev, { role: 'assistant', content: errorData.answer || 'Error occurred while processing your request.' }]);
+        const errorData = await response.json().catch(() => ({ answer: '' }));
+        const msg = errorData.answer || (response.status === 404
+          ? `Chat endpoint not found. Is the backend running at ${API_BASE_URL}? Use "npm run start" in frontend and run the backend (e.g. "uvicorn main:app --reload" in backend).`
+          : 'Error occurred while processing your request.');
+        setMessages(prev => [...prev, { role: 'assistant', content: msg }]);
         return;
       }
 

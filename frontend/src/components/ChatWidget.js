@@ -23,29 +23,24 @@ export function ChatWidget() {
       };
 
       // Include user info if available, otherwise proceed as guest
+      const headers = { 'Content-Type': 'application/json' };
       if (isAuthenticated && user && user.token) {
-        const response = await fetch(`${API_BASE_URL}/chat`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${user.token}`,
-          },
-          body: JSON.stringify(requestBody),
-        });
-        const data = await response.json();
-        setMessages(prev => [...prev, { role: 'assistant', content: data.answer }]);
-      } else {
-        // For guests, make request without authentication
-        const response = await fetch(`${API_BASE_URL}/chat`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(requestBody),
-        });
-        const data = await response.json();
-        setMessages(prev => [...prev, { role: 'assistant', content: data.answer }]);
+        headers['Authorization'] = `Bearer ${user.token}`;
       }
+      const response = await fetch(`${API_BASE_URL}/chat`, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(requestBody),
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        const msg = data.answer || (response.status === 404
+          ? `Chat endpoint not found. Is the backend running at ${API_BASE_URL}?`
+          : 'Error occurred while processing your request.');
+        setMessages(prev => [...prev, { role: 'assistant', content: msg }]);
+        return;
+      }
+      setMessages(prev => [...prev, { role: 'assistant', content: data.answer }]);
     } catch (error) {
       console.error('Chat error:', error);
       setMessages(prev => [...prev, { role: 'assistant', content: 'Error occurred while processing your request.' }]);

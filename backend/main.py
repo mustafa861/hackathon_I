@@ -36,3 +36,8 @@ app.include_router(translate.router)
 @app.get("/")
 def root():
     return {"message": "Physical AI Textbook API", "version": "1.0.0"}
+
+@app.get("/health")
+def health():
+    """Health check; use POST /chat for the chatbot."""
+    return {"status": "ok"}
