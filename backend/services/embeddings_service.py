@@ -39,6 +39,40 @@ def embed_text(text: str) -> list[float]:
         print(f"Embedding error: {str(e)}")
         return [0.0] * 1024  # Default embedding vector size for Cohere's model
 
+def add_textbook_content(text: str, chapter_slug: str = "", section_title: str = ""):
+    """Add textbook content to the vector database"""
+    try:
+        # Generate embedding for the text
+        vector = embed_text(text)
+
+        # Create a unique ID for this content (using a simple counter approach)
+        import uuid
+        point_id = str(uuid.uuid4())
+
+        # Prepare the payload with metadata
+        payload = {
+            "text": text,
+            "chapter_slug": chapter_slug,
+            "section_title": section_title
+        }
+
+        # Upsert the point to the collection
+        client.upsert(
+            collection_name=COLLECTION_NAME,
+            points=[
+                PointStruct(
+                    id=point_id,
+                    vector=vector,
+                    payload=payload
+                )
+            ]
+        )
+        return True
+    except Exception as e:
+        print(f"Error adding textbook content: {str(e)}")
+        return False
+
+
 def search_similar(query: str, limit: int = 5) -> list:
     """Search for similar chapter sections"""
     query_vector = embed_text(query)

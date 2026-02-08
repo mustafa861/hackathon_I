@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from api import auth, chat, personalize, translate
+from api import auth, chat, personalize, translate, data_loader
 from database import Base, engine
 from services.embeddings_service import setup_collection
 
@@ -21,7 +21,7 @@ def startup_event():
 # CORS (allow Docusaurus frontend)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],  # Docusaurus dev server
+    allow_origins=["http://localhost:3000", "https://muahmmadmustafa-hackathon1.hf.space"],  # Docusaurus dev server
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -32,6 +32,7 @@ app.include_router(auth.router)
 app.include_router(chat.router)
 app.include_router(personalize.router)
 app.include_router(translate.router)
+app.include_router(data_loader.router)
 
 @app.get("/")
 def root():

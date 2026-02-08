@@ -20,11 +20,29 @@ class SkillRunner:
     def run_translator(markdown: str) -> str:
         """Translate markdown to Urdu using the translation agent"""
         try:
+            # Check if markdown content is valid
+            if not markdown or len(markdown.strip()) == 0:
+                return "کوئی مواد ترجمہ کے لیے دستیاب نہیں ہے"  # "No content available for translation" in Urdu
+
             system = "You are a professional translator that translates English text to Urdu. Maintain accuracy and cultural appropriateness."
             user = f"Translate the following English text to Urdu. Preserve the meaning and context. Keep technical terms in English if there's no direct Urdu equivalent. Provide only the translated text in Urdu.\n\nText to translate:\n{markdown}"
-            return llm_complete(system, user, temperature=0.3, max_tokens=1500)
+
+            result = llm_complete(system, user, temperature=0.3, max_tokens=1500)
+
+            # Check if the result is valid
+            if not result or result.strip() in ["", "I couldn't generate a response.", "I couldn't generate a response"]:
+                return "ترجمہ نہیں کیا جا سکا"  # "Translation could not be performed" in Urdu
+
+            return result
         except Exception as e:
-            raise RuntimeError(f"Translation failed: {str(e)}")
+            error_msg = str(e).lower()
+            # Return appropriate Urdu error message based on the error
+            if "quota" in error_msg or "exceeded" in error_msg:
+                return "ترجمہ کی سروس کوٹا سے تجاوز کر گیا ہے"  # "Translation service quota exceeded" in Urdu
+            elif "api" in error_msg or "key" in error_msg or "auth" in error_msg:
+                return "ترجمہ کی سروس کی تشکیل درست نہیں ہے"  # "Translation service is not properly configured" in Urdu
+            else:
+                return "ترجمہ کے دوران خرابی آ گئی"  # "An error occurred during translation" in Urdu
 
     @staticmethod
     def run_personalizer(markdown: str, profile: Dict) -> str:
