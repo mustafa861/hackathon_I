@@ -87,7 +87,7 @@ export default function SignupPage() {
                 />
               </div>
 
-              <div className="margin-bottom--sm">
+              {/* <div className="margin-bottom--sm">
                 <label>
                   <input
                     type="checkbox"
@@ -111,7 +111,7 @@ export default function SignupPage() {
                   />
                   I have an NVIDIA GPU
                 </label>
-              </div>
+              </div> */}
 
               <button type="submit" className="button button--primary">
                 Sign Up
