@@ -21,7 +21,7 @@ def startup_event():
 # CORS (allow Docusaurus frontend)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "https://muahmmadmustafa-hackathon1.hf.space"],  # Docusaurus dev server
+    allow_origins=["https://muahmmadmustafa-frontnedbook.hf.space/", "https://muahmmadmustafa-hackathon1.hf.space"],  # Docusaurus dev server
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
